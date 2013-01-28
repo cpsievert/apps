@@ -11,9 +11,15 @@ shinyServer(function(input, output) {
   #  2) Its output type is a plot 
   #
   output$distPlot <- reactivePlot(function() {
-    # generate an rnorm distribution and plot it
-    dist <- rnorm(n=input$obs)
-    hist(dist)
+    
+    if (input$dist == "norm") {
+      dist <- rnorm(n=input$obs, mean=input$mean, sd=input$std)
+      hist(dist)
+    } else {
+      dist <- rgamma(n=input$obs, shape=input$shape)
+      hist(dist)
+    }
+    
   })
   
 })

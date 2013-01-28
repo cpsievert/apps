@@ -12,7 +12,7 @@ shinyServer(function(input, output) {
   #
   output$distPlot <- reactivePlot(function() {
     # generate an rnorm distribution and plot it
-    dist <- rnorm(n=input$obs)
+    dist <- rnorm(n=input$obs, mean=input$mean, sd=input$std)
     hist(dist)
   })
   

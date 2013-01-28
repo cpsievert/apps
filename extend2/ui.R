@@ -8,6 +8,8 @@ shinyUI(pageWithSidebar(
   
   # Sidebar with a slider input for number of observations
   sidebarPanel(
+    selectInput("dist", "Select a distribution:", 
+                choices=c("Normal" = "norm", "Gamma" = "gamma")),
     sliderInput("obs", 
                 "Number of observations:", 
                 min = 0, 
