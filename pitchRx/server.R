@@ -1,12 +1,11 @@
 library(shiny)
+if (!require(animation)) install.packages("animation", repos="http://streaming.stat.iastate.edu/CRAN/")
+if (!require(pitchRx)) install.packages("pitchRx", repos="http://streaming.stat.iastate.edu/CRAN/")
+if (!require(Cairo)) install.packages("Cairo", repos="http://streaming.stat.iastate.edu/CRAN/")
 library(animation)
-library(devtools)
-setwd("~/Desktop/github/local/pitchRx")
-install(".")
-#install_github('pitchRx', 'cpsievert')
 library(pitchRx)
 
-valid <- function(input, default) { 
+valid <- function(input, default) {
   if (is.null(input)) return(FALSE)
   if (input == default) return (FALSE)
   return(TRUE)
@@ -14,7 +13,7 @@ valid <- function(input, default) {
 
 
 shinyServer(function(input, output) {
-
+  
   getSample <- reactive(function() {
     data(pitches, package = "pitchRx")
     get('pitches')
@@ -22,7 +21,7 @@ shinyServer(function(input, output) {
   
   getLocal <- reactive(function() {
     if (!is.null(input$file)) {
-      path <- input$file$datapath 
+      path <- input$file$datapath
       read.csv(path)
     } else NULL
   })
@@ -43,7 +42,7 @@ shinyServer(function(input, output) {
   
   output$pointColor <- reactiveUI(function() {
     n <- getNames()
-    selectInput("pointColor", "Choose a 'color' variable:", 
+    selectInput("pointColor", "Choose a 'color' variable:",
                 choices=c("pitch_types"="pitch_types", "None"="None", n))
   })
   
@@ -66,8 +65,8 @@ shinyServer(function(input, output) {
       if (input$denVar1 != "None") {
         data <- getData()
         vals <- sort(unique(data[,input$denVar1]))
-        checkboxGroupInput("vals1", "Select value(s) of this variable:", 
-                           choices  = vals, selected = vals[[1]])
+        checkboxGroupInput("vals1", "Select value(s) of this variable:",
+                           choices = vals, selected = vals[[1]])
       } else NULL
     } else NULL
   })
@@ -77,25 +76,25 @@ shinyServer(function(input, output) {
       if (input$denVar2 != "None") {
         data <- getData()
         vals <- sort(unique(data[,input$denVar2]))
-        checkboxGroupInput("vals2", "Select value(s) of this variable:", 
-                           choices  = vals, selected = vals[[1]])
+        checkboxGroupInput("vals2", "Select value(s) of this variable:",
+                           choices = vals, selected = vals[[1]])
       } else NULL
     } else NULL
   })
   
-#   output$customX <- reactiveUI(function() {
-#     if (input$visMethod == "custom"){
-#       n <- getNames()
-#       selectInput("customX", "Choose an 'x' variable:", choices=c("None"="None", n))
-#     } else NULL
-#   })
-#   
-#   output$customY <- reactiveUI(function() {
-#     if (input$visMethod == "custom"){
-#       n <- getNames()
-#       selectInput("customY", "Choose a 'y' variable:", choices=c("None"="None", n))
-#     } else NULL
-#   })
+  # output$customX <- reactiveUI(function() {
+  # if (input$visMethod == "custom"){
+  # n <- getNames()
+  # selectInput("customX", "Choose an 'x' variable:", choices=c("None"="None", n))
+  # } else NULL
+  # })
+  #
+  # output$customY <- reactiveUI(function() {
+  # if (input$visMethod == "custom"){
+  # n <- getNames()
+  # selectInput("customY", "Choose a 'y' variable:", choices=c("None"="None", n))
+  # } else NULL
+  # })
   
   plotFX <- reactive(function() {
     data <- getData()
@@ -104,31 +103,32 @@ shinyServer(function(input, output) {
     facet2 <- input$facet2
     if (facet1 == "Enter my own") facet1 <- input$facet1custom
     if (facet2 == "Enter my own") facet2 <- input$facet2custom
-    if (facet1 == "No facet" & facet2 == "No facet") 
+    if (facet1 == "No facet" & facet2 == "No facet")
       facet_layer <- list()
     if (facet1 != "No facet" & facet2 == "No facet") {
       facet_layer <- call("facet_grid", paste(".~", facet1, sep=""))
     }
-    if (facet1 == "No facet" & facet2 != "No facet") {  
+    if (facet1 == "No facet" & facet2 != "No facet") {
       facet_layer <- call("facet_grid", paste(facet2, "~.", sep=""))
     }
     if (facet1 != "No facet" & facet2 != "No facet") {
       facet_layer <- call("facet_grid", paste(facet2, "~", facet1, sep=""))
     }
-#     if (input$visMethod == "custom") {
-#       custom_map <- aes_string(x=input$customX, y=input$customY)
-#       print(ggplot(data, custom_map)+geom_point()+xlim(input$xmin, input$xmax)+ylim(input$ymin, input$ymax)) 
-#     }
+    if (input$coord.equal) {
+      coord_equal <- coord_equal()
+    } else coord_equal <- NULL
+    # if (input$visMethod == "custom") {
+    # custom_map <- aes_string(x=input$customX, y=input$customY)
+    # print(ggplot(data, custom_map)+geom_point()+xlim(input$xmin, input$xmax)+ylim(input$ymin, input$ymax))
+    # }
     if (input$visMethod == "animate") {
-      library(Cairo)
-      library(animation)
-      oopt <- ani.options(interval = 0.01, ani.dev = CairoPNG, 
-                         title = "My pitchRx Animation", 
-                         description = "Generated from <a href='http://cpsievert.github.com/home.html'>Carson Sievert</a>'s PITCHf/x <a href='https://gist.github.com/4440099'>visualization tool</a>")
-      ani.start()
-      print(animateFX(data, point.size=input$point_size, 
-                      point.alpha=input$point_alpha, layer=facet_layer))
-      ani.stop()
+      oopt <- ani.options(interval = 0.01, ani.dev = CairoPNG,
+                          title = "My pitchRx Animation",
+                          description = "Generated from <a href='http://cpsievert.github.com/home.html'>Carson Sievert</a>'s PITCHf/x <a href='https://gist.github.com/4440099'>visualization tool</a>")
+      saveHTML(animateFX(data, point.size=input$point_size,
+                         point.alpha=input$point_alpha,
+                         layer=list(facet_layer, coord_equal), parent=TRUE),
+               outdir = getwd())
       ani.options(oopt)
     }
     #Set binwidths for hex and bins
@@ -152,23 +152,25 @@ shinyServer(function(input, output) {
       contours <- input$tile_contour
       a <- input$tile_adjust
     }
-    #browser(expr= valid(input$denVar1, "None"))
     if (input$visMethod == "strike") {
       den1 <- list()
       den2 <- list()
       if (valid(input$denVar1, "None") && !is.null(input$vals1)) {
-          den1 <- list(input$vals1)
-          names(den1) <- input$denVar1
+        den1 <- list(input$vals1)
+        names(den1) <- input$denVar1
       }
       if (valid(input$denVar2, "None") && !is.null(input$vals1)) {
-          den2 <- list(input$vals2)
-          names(den2) <- input$denVar2
+        den2 <- list(input$vals2)
+        names(den2) <- input$denVar2
       }
-      print(strikeFX(data, geom=input$geom, point.size=input$point_size, 
-                     point.alpha=input$point_alpha, color=input$pointColor, density1=den1,
-                     density2=den2, layer=facet_layer, contour=contours, adjust=a,
-                     limitz=c(input$xmin, input$xmax, input$ymin, input$ymax),
-                     binwidth=binwidths))
+      if (!is.null(input$pointColor)) {
+        pointColor <- input$pointColor
+      } else pointColor <- "pitch_types"
+      print(strikeFX(data, geom=input$geom, point.size=input$point_size,
+                     point.alpha=input$point_alpha, color=pointColor, density1=den1,
+                     density2=den2, layer=list(facet_layer, coord_equal), contour=contours,
+                     adjust=a, limitz=c(input$xmin, input$xmax, input$ymin, input$ymax),
+                     binwidth=binwidths, parent=TRUE))
     }
   })
   
@@ -182,11 +184,11 @@ shinyServer(function(input, output) {
       paste(pre, ".png", sep="")
     },
     content <- function(file) {
-      png(file) 
+      png(file)
       print(plotFX())
       dev.off()
     },
     contentType = 'image/png'
   )
-    
+  
 })
