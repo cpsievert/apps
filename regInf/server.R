@@ -2,17 +2,22 @@ library(MASS)
 library(ggplot2)
 library(shiny)
 
-N <- 100
-slope <- .7
-mat <- mvrnorm(N, mu=rep(5,2), Sigma = matrix(c(1, slope, slope, 1), nrow=2, ncol=2), empirical=TRUE)
-dat <- data.frame(x=mat[,1], y=mat[,2], sample=rep(FALSE, N))
-samples <- NA
+
 
 # Define server logic required to generate and plot a random distribution
 shinyServer(function(input, output) {
   
+  getDat <- reactive({
+    N <<- 100
+    slope <<- input$slope 
+    mat <<- mvrnorm(N, mu=rep(5,2), Sigma = matrix(c(1, slope, slope, 1), nrow=2, ncol=2), empirical=TRUE)
+    dat <<- data.frame(x=mat[,1], y=mat[,2], sample=rep(FALSE, N))
+    samples <<- NA
+  })
+  
   output$plot <- renderPlot({
     #set.seed(1)
+    getDat()
     n <- as.numeric(input$n)
     dat[sample(1:N, n),"sample"] <- TRUE
     lm_eqn = function(df, sample=FALSE){
@@ -21,8 +26,8 @@ shinyServer(function(input, output) {
       }
       m <<- lm(y ~ x, df)
       eq <- substitute(italic(y) == a + b %.% italic(x),
-                       list(a = format(coef(m)[1], digits = 3),
-                            b = format(coef(m)[2], digits = 3)))
+                       list(a = format(round(coef(m)[1], 3), digits = 3),
+                            b = format(round(coef(m)[2], 3), digits = 3)))
       #r2 = format(summary(m)$r.squared, digits = 3)))
       as.character(as.expression(eq));
       
@@ -41,6 +46,7 @@ shinyServer(function(input, output) {
   })
   
   output$hist <- renderPlot({
+    getDat()
     if(input$sampleid == 0){
       return(NULL)
     }else{

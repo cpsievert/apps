@@ -8,11 +8,12 @@ shinyUI(pageWithSidebar(
   
   # Sidebar with a slider input for number of observations
   sidebarPanel(
+    numericInput("slope", label="Population Slope", min = -10, max = 10, value = 0.7),
     checkboxInput("sample",
                   "Collect Sample!",
                   value=FALSE),
     numericInput("n", label="n", min = 5, max = 100, value = 20),
-    sliderInput("sampleid", "Sample id", min = 0, max = 100, value = 1, animate = TRUE)
+    sliderInput("sampleid", "Sample id", min = 0, max = 100, value = 0, animate = TRUE)
   ),
   
   # Show a plot of the generated distribution
