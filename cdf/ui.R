@@ -6,6 +6,6 @@ shinyUI(bootstrapPage(
   ),
   
   sidebarPanel(
-    sliderInput("q1", "z-score", min = -4, max = 4, value = 0, step = 0.1)
+    sliderInput("q1", "z-score", min = -4, max = 4, value = 0, step = 0.01)
   )
 ))

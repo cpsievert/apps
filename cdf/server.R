@@ -1,7 +1,7 @@
 library(shiny)
 library(ggplot2)
 
-plotArea <- function(section = "upper", q1 = -1.5, q2=NULL, mean=0, sd=1, label.quantiles=TRUE, dist = "Z", xlab="z") {
+plotArea <- function(section = "upper", q1 = -1.5, q2=NULL, mean=0, sd=1, label.quantiles=TRUE, dist = "z", xlab="z") {
   require(ggplot2)
   x <- seq(mean-4*sd, mean+4*sd, by  = 0.01)
   data <- data.frame(x = x, density = dnorm(x, mean=mean, sd=sd))
@@ -38,7 +38,8 @@ plotArea <- function(section = "upper", q1 = -1.5, q2=NULL, mean=0, sd=1, label.
       area <- pnorm(q.max, mean=mean, sd=sd) - pnorm(q.min, mean=mean, sd=sd)
     }
   }
-  p + geom_ribbon(data=section, aes(ymin=0, ymax=density, fill="blue", alpha=.4))+theme(legend.position = "none") + annotate("text", label = paste("shaded area is \n around", round(area, 4)), x = mean+3*sd, y = 2*(max(data$density)-min(data$density))/3, size = 8, colour = "red")
+  p + geom_ribbon(data=section, aes(ymin=0, ymax=density, fill="blue", alpha=.4))+theme(legend.position = "none") + 
+    annotate("text", label = paste("shaded area = \n P(", toupper(dist), "<", q1, ") = ", round(area, 4)), x = mean+2.9*sd, y = 2*(max(data$density)-min(data$density))/3, size = 8, colour = "red")
 }
 
 shinyServer(function(input, output, session) {
