@@ -12,7 +12,7 @@ shinyUI(pageWithSidebar(
                  choices=c("No Sample" = "none",
                            "Simple Random Sample" = "srs", 
                            "Cluster Sampling" = "clust", 
-                           "Stratisfied Random Sample" = "strat")),
+                           "Stratified Random Sample" = "strat")),
     submitButton("Take Sample!")
   ),
   
