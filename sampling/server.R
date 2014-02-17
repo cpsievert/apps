@@ -26,6 +26,7 @@ p <- ggplot(data=dat, aes(x=X1, y=X2, shape=shapes, col=shapes)) + geom_point(si
 shinyServer(function(input, output) {
   
   takeSample <- reactive({
+    val <- input$actionID
     if (input$samp_type %in% "none") dat2 <- dat
     if (input$samp_type %in% "srs"){
       n.srs <- 9
