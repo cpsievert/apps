@@ -24,8 +24,9 @@ dat$shapes <- factor(rep(shape.nms, n.strata), levels=shape.nms)
 p <- ggplot(data=dat, aes(x=X1, y=X2, shape=shapes, col=shapes)) + geom_point(size=10) + stripped
 
 shinyServer(function(input, output) {
-
+  
   takeSample <- reactive({
+    val <- input$actionID
     if (input$samp_type %in% "none") dat2 <- dat
     if (input$samp_type %in% "srs"){
       n.srs <- 9
@@ -36,16 +37,22 @@ shinyServer(function(input, output) {
       dat2 <- subset(dat, shapes != sample(shape.nms, 1))
     }
     if (input$samp_type %in% "strat"){
-      idx2 <- sample(n.strata, n.strata)
-      dat2 <- dat[c(idx2, idx2 + n.strata, idx2 + n.strata), ]
+      # Hardcoded n.srs so let's just hardcode the
+      # stratified sampling... I don't think it was truly
+      # stratified before...
+      id.1 <- sample(0:8, 6)*3 + 1
+      id.2 <- sample(0:8, 6)*3 + 2
+      id.3 <- sample(0:8, 6)*3 + 3
+      idx <- c(id.1, id.2, id.3)
+      dat2 <- dat[idx, ]
     }
     return(dat2)
   })
   
   output$mainPlot <- renderPlot({
     dat2 <- takeSample()
-    print(p + ggtitle("Population of circles triangles and squares!") + 
-          geom_point(data=dat2, aes(x=X1, y=X2, shape=shapes), colour="grey90", size=8))
+    print(p + ggtitle("Population of circles, triangles, and squares!") + 
+            geom_point(data=dat2, aes(x=X1, y=X2, shape=shapes), colour="grey90", size=8))
   })
   
   output$splitPlot <- renderPlot({
@@ -56,4 +63,3 @@ shinyServer(function(input, output) {
   
   
 })
-
