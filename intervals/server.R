@@ -8,7 +8,7 @@ shinyServer(function(input, output) {
   output$dist <- renderPlot({
     mu <- input$mu
     sd <- input$sigma/sqrt(input$N)
-    z <- qnorm(input$coverage/100)
+    z <- qnorm(1 - (1 - input$coverage/100)/2)
     lq <- mu - z*sd
     uq <- mu + z*sd
     #max/min shouldn't change with sample size to keep prespective (20 seems like a reasonable value)
@@ -32,7 +32,7 @@ shinyServer(function(input, output) {
   output$intervals <- renderPlot({
     mu <- input$mu
     sd <- input$sigma/sqrt(input$N)
-    z <- qnorm(input$coverage/100)
+    z <- qnorm(1 - (1 - input$coverage/100)/2)
     lq <- mu - z*sd
     uq <- mu + z*sd
     #max/min shouldn't change with sample size to keep prespective (20 seems like a reasonable value)
