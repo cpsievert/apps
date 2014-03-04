@@ -18,6 +18,7 @@ shinyServer(function(input, output) {
     ymax <- dnorm(mu, mu, input$sigma/sqrt(30)) #maximum density
     x <- seq(xmin, xmax, length.out = 100)
     density <- dnorm(x, mu, sd)
+    density <- ifelse(density >= ymax, ymax, density)
     dat <- data.frame(x, density)
     p <- ggplot(data=dat, aes(x=x, y=density)) + geom_line() +
       geom_vline(xintercept=mu, colour = "red") +
@@ -61,7 +62,8 @@ shinyServer(function(input, output) {
         geom_vline(xintercept = mu, colour = "red") +
         geom_errorbarh(aes(xmax = lb, xmin = ub, colour=colors)) +
         geom_vline(xintercept=lq, colour = "blue", linetype = 2) +
-        geom_vline(xintercept=uq, colour = "blue", linetype = 2)
+        geom_vline(xintercept=uq, colour = "blue", linetype = 2) +
+        ggtitle(paste(round(100*sum(outside %in% "No" & show %in% "Yes")/input$n), "% of intervals capture the population mean"))
     } else {
       p <- p + geom_blank()
     }
