@@ -12,8 +12,9 @@ shinyUI(pageWithSidebar(
                  choices=c("No Sample" = "none",
                            "Simple Random Sample" = "srs", 
                            "Cluster Sampling" = "clust", 
-                           "Stratisfied Random Sample" = "strat")),
-    submitButton("Take Sample!")
+                           "Stratified Random Sample" = "strat")),
+    #submitButton("Take Sample!")
+    actionButton("actionID", "Take Sample")
   ),
   
   # Show a plot of the generated distribution
