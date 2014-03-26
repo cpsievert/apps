@@ -47,8 +47,8 @@ shinyServer(function(input, output, session) {
         line1 <- geom_vline(xintercept=critical, color = "blue")
         if (type == "both") line2 <- geom_vline(xintercept = -critical, color = "blue")
         #Thank you yihui -- http://vis.supstat.com/2013/04/mathematical-annotation-in-r/
-        crit1 <- annotate("text", label = "group('|', t[list(frac(alpha, 2), n-1)], '|')", parse = TRUE, x = 2.5, y = 0.35, size = 8, colour = "blue")
-        crit2 <- annotate("text", label = paste(" = ", abs(critical)), x = 3.4, y = 0.35, size = 8, colour = "blue")
+        #crit1 <- annotate("text", label = "group('|', t[list(frac(alpha, 2), n-1)], '|')", parse = TRUE, x = 2.5, y = 0.35, size = 8, colour = "blue")
+        #crit2 <- annotate("text", label = paste(" = ", abs(critical)), x = 3.4, y = 0.35, size = 8, colour = "blue")
         if (area < pt(critical, df)) {
           msg <- annotate("text", label = "Reject the null", x = 3, y = 0.3, size = 8, colour = "blue")
         } else {
@@ -65,7 +65,7 @@ shinyServer(function(input, output, session) {
     } else  if (input$type == "lower") {
       crit <- qt(input$alpha, df = input$n - 1)
     } else { #two-sided test
-      crit <- qt(input$alpha, df = input$n - 1)
+      crit <- qt(input$alpha/2, df = input$n - 1)
     } 
     crit <- round(crit, 2)
     #Show the critical value?
