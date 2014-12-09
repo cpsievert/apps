@@ -7,19 +7,14 @@ A collection of some [shiny](http://cran.r-project.org/web/packages/shiny/index.
 
 Click on any of the links below to view the app hosted on my server. If you see anything that doesn't look right, [please let me know](https://github.com/cpsievert/shiny_apps/issues/new)!
 
-* [cdf](http://104.131.111.111:3838/cdf)
-* [CLT](http://104.131.111.111:3838/CLT)
-* [extend1](http://104.131.111.111:3838/extend1)
-* [extend2](http://104.131.111.111:3838/extend2)
-* [extend3](http://104.131.111.111:3838/extend3)
-* [ggtree](http://104.131.111.111:3838/ggtree)
-* [intervals](http://104.131.111.111:3838/intervals)
-* [pitchRx](http://104.131.111.111:3838/pitchRx)
-* [pitchRx-db](http://104.131.111.111:3838/pitchRx-db)
-* [regInf](http://104.131.111.111:3838/regInf)
-* [sampling](http://104.131.111.111:3838/sampling)
-* [testing](http://104.131.111.111:3838/testing)
-* [testing2](http://104.131.111.111:3838/testing2)
+```{r echo=FALSE, comment="", results='asis'}
+# every directory should be a shiny app
+filez <- list.files()
+apps <- filez[file.info(filez)$isdir]
+cat(paste0("* [", apps, "]", 
+           "(http://104.131.111.111:3838/", apps, ")",
+           collapse = "\n"))
+```
 
 ## Download and run these apps locally.
 

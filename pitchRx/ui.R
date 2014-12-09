@@ -1,3 +1,4 @@
+options(rgl.useNULL=TRUE)
 library(shiny)
 library(shinyRGL)
 
