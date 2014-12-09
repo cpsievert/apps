@@ -126,8 +126,8 @@ shinyServer(function(input, output) {
     samp.mean <- mean(samps)
     v <- geom_vline(xintercept = pop.mean, color = "red") #population mean
     themes <- theme(axis.text.x=element_text(size=30),  #make stuff bigger
-                    axis.text.y=theme_blank(), #don't want them focusing on 'irrelevant counts'
-                    plot.title=theme_text(size=30, face="bold")) 
+                    axis.text.y=element_blank(), #don't want them focusing on 'irrelevant counts'
+                    plot.title=element_text(size=30, face="bold")) 
     if (input$sample) {
       title <- labs(title = paste("Sampling Distribution of the Sample Mean when n = ", input$n, sep=""))
       #v2 <- geom_vline(xintercept = samp.mean, color = "green") #sampling dist mean
