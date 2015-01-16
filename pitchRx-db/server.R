@@ -1,4 +1,5 @@
-
+atbats <- tbl(db, "atbat")
+pitches <- tbl(db, "pitch")
 
 shinyServer(function(input, output, session) {
   
@@ -17,7 +18,7 @@ shinyServer(function(input, output, session) {
     if (away.team != "any") atbats <- filter(atbats, away_team == away.team)
     if (pitcher.name != "any") atbats <- filter(atbats, pitcher_name == pitcher.name)
     if (batter.name != "any") atbats <- filter(atbats, batter_name == batter.name)
-    return(inner_join(tbl(db, "pitch"), atbats))
+    return(inner_join(pitches, atbats, ))
   })
   
   output$table <- renderDataTable({
@@ -26,8 +27,8 @@ shinyServer(function(input, output, session) {
     
     # isolate() means that when input$whatever changes, this code won't re-execute until input$query does
     isolate({
-      # Retrieve just the first 100 records to expedite display of large queries
-      table.dat <- as.data.frame(head(retrieve(), 100L)) 
+      # Retrieve just the first 50 records to expedite display of large queries
+      table.dat <- head(retrieve(), 50L)
       field.names <- input$fields
       table.dat[, field.names]
     })
