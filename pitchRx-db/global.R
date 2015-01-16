@@ -54,10 +54,10 @@ db <- src_postgres(dbname = 'pitchfx',
 # saveRDS(away_teams, file = "away_teams.rds")
 
 # should I update gids to include playoff games?
-pitcher_names <- dbGetQuery(db$con, "SELECT DISTINCT pitcher_name
-                                  FROM atbat
-                                  WHERE pitcher_name != 'NA'")[,1]
-saveRDS(pitcher_names, file = "away_teams.rds")
+# pitcher_names <- dbGetQuery(db$con, "SELECT DISTINCT pitcher_name
+#                                   FROM atbat
+#                                   WHERE pitcher_name != 'NA'")[,1]
+# saveRDS(pitcher_names, file = "away_teams.rds")
 
 # Field names are passed to ui.R so the user can pick which ones they want
 data(gids, package = "pitchRx")

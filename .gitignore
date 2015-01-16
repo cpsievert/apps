@@ -5,3 +5,4 @@ README.Rmd
 */shinyapps/
 pitchRx/interactiveFX/
 pitchRx/strikeFX/
+pitchRx-db/postgres-notes.R
