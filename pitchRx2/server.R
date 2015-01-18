@@ -57,7 +57,7 @@ shinyServer(function(input, output, session) {
   #updateInputs <- reactive({
   #  valid.gids <- gids[input$dateRange[1] <= gids & gids <= input$dateRange[2]]
     updateSelectizeInput(session, 'game', 
-                         choices = c("Any game" = "any", valid.gids), 
+                         choices = c("Any game" = "any", gids), 
                          server = TRUE)
     updateSelectizeInput(session, 'pitcher', 
                          choices = c("Any Pitcher" = "any", player.names), 
