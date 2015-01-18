@@ -1,3 +1,16 @@
+library("dplyr")
+library("DBI")
+library("animint")
+
+# This app is meant to run on Carson Sievert's machine,
+# but you _could_ run this locally by changing this bit to connect
+# to your own database. For instance: db <- src_sqlite("~/pitchRx.sqlite3")
+db <- src_postgres(dbname = 'pitchfx',
+                   user = 'postgres',
+                   password = Sys.getenv("POSTGRES_PWD"),
+                   port = '5432', host = "localhost")
+
+
 # https://gist.github.com/cpsievert/da555f08f3c9ba2c0b8e
 getLocations <- function(dat, ..., summarise = TRUE) {
   # select and group by columns specified in ...

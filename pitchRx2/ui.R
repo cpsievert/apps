@@ -1,4 +1,8 @@
-# NOTE TO SELF: Have the app update the database as a nightly CRON job!
+library("pitchRx")
+# Field names are passed to ui.R so the user can pick which ones they want
+data(gids, package = "pitchRx")
+data(players, package = "pitchRx")
+player.names <- sort(players$full_name)
 dates <- as.Date(substr(gids, 5, 14), format = "%Y_%m_%d")
 
 shinyUI(fluidPage(
