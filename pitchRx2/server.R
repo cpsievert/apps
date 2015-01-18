@@ -50,7 +50,7 @@ shinyServer(function(input, output, session) {
     end.date <- gsub("_", "-", as.character(input$dateRange[2]))
     pitcher.name <- input$pitcher
     batter.name <- input$batter
-    batter.name <- input$batter
+    game <- input$game
     pa <- tbl(db, "pa") %>% filter(date >= start.date, date <= end.date)
     if (game != "any") pa <- filter(pa, gameday_link %in% game)
     if (pitcher.name != "any") pa <- filter(pa, pitcher_name %in% pitcher.name)
