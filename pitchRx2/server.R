@@ -54,16 +54,19 @@ shinyServer(function(input, output, session) {
   
   # avoid sending *all* game ids to the browser
   # http://shiny.rstudio.com/articles/selectize.html
-  valid.gids <- gids[input$dateRange[1] <= gids & gids <= input$dateRange[2]]
-  updateSelectizeInput(session, 'game', 
-                       choices = c("Any game" = "any", valid.gids), 
-                       server = TRUE)
-  updateSelectizeInput(session, 'pitcher', 
-                       choices = c("Any Pitcher" = "any", player.names), 
-                       server = TRUE)
-  updateSelectizeInput(session, 'batter',
-                       choices = c("Any Batter" = "any", player.names),
-                       server = TRUE)
+  updateInputs <- reactive({
+    valid.gids <- gids[input$dateRange[1] <= gids & gids <= input$dateRange[2]]
+    updateSelectizeInput(session, 'game', 
+                         choices = c("Any game" = "any", valid.gids), 
+                         server = TRUE)
+    updateSelectizeInput(session, 'pitcher', 
+                         choices = c("Any Pitcher" = "any", player.names), 
+                         server = TRUE)
+    updateSelectizeInput(session, 'batter',
+                         choices = c("Any Batter" = "any", player.names),
+                         server = TRUE)
+  })()
+  
   
   retrieve <- reactive({
     # Both dplyr and shiny use non-standard evaluation -- https://groups.google.com/forum/#!topic/manipulatr/jESTCrOn7hI
