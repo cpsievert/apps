@@ -5,7 +5,7 @@ library("animint")
 # This app is meant to run on Carson Sievert's machine,
 # but you _could_ run this locally by changing this bit to connect
 # to your own database. For instance: 
-if (Sys.info()$nodename == "Carsons-MacBook-Pro.local") {
+if (Sys.info()[["nodename"]] == "Carsons-MacBook-Pro.local") {
   db <- src_sqlite("~/pitchRx.sqlite3")
 } else {
   db <- src_postgres(dbname = 'pitchfx',
