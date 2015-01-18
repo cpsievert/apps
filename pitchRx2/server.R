@@ -1,6 +1,6 @@
 library("dplyr")
+library("tidyr")
 library("DBI")
-library("pitchRx")
 library("animint")
 
 # This app is meant to run on Carson Sievert's machine,
@@ -30,7 +30,7 @@ getLocations <- function(dat, ..., summarise = TRUE) {
     labs <- dat[vars]
   }
   # returns 3D array of locations of pitches over time
-  value <- getSnapshots(as.data.frame(tb))
+  value <- pitchRx::getSnapshots(as.data.frame(tb))
   idx <- labs %>% unite(id, ..., sep = "@&")
   dimnames(value) <- list(idx = idx[, 1],
                           frame = seq_len(dim(value)[2]),
@@ -73,7 +73,6 @@ shinyServer(function(input, output, session) {
       warning(paste0("You've requested more than", threshold, " records.
                Only the first 5000 records will be returned."))
     }
-    summary(cpa)
   })
   
   output$series <- renderAnimint({
