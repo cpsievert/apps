@@ -76,7 +76,7 @@ shinyServer(function(input, output, session) {
   })
   
   output$series <- renderAnimint({
-    dat <- getLocations(pitches, pitcher_name, pitch_type, summarise = TRUE)
+    dat <- getLocations(cpa, pitcher_name, pitch_type, summarise = TRUE)
     p <- ggplot() + 
       geom_point(aes(x = x, y = z, color = pitch_type, 
                      showSelected = frame), data = dat) + 
