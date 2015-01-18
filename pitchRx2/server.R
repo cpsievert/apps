@@ -47,7 +47,9 @@ getLocations <- function(dat, ..., summarise = TRUE) {
 
 data(gids, package = "pitchRx")
 data(players, package = "pitchRx")
+names(gids) <- gids # eventually put nice names here
 player.names <- sort(players$full_name)
+names(player.names) <- player.names
 dates <- as.Date(substr(gids, 5, 14), format = "%Y_%m_%d")
 
 shinyServer(function(input, output, session) {
