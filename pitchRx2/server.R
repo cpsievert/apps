@@ -76,9 +76,10 @@ shinyServer(function(input, output, session) {
   })
   
   output$series <- renderAnimint({
+    dat <- getLocations(pitches, pitcher_name, pitch_type, summarise = TRUE)
     p <- ggplot() + 
       geom_point(aes(x = x, y = z, color = pitch_type, 
-                     showSelected = frame), data = cpa) + 
+                     showSelected = frame), data = dat) + 
       facet_grid(. ~ pitcher_name) + ylim(0, 7) + xlim(-3, 3) +
       coord_equal() + xlab("") + ylab("Height from ground") 
     plist <- list(strikezone = p + theme_animint(width = 800),            
