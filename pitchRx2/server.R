@@ -14,13 +14,13 @@ if (Sys.info()[["nodename"]] == "Carsons-MacBook-Pro.local") {
                      port = '5432', host = "localhost")
 }
 
-
 # https://gist.github.com/cpsievert/da555f08f3c9ba2c0b8e
 getLocations <- function(dat, ..., summarise = TRUE) {
   # select and group by columns specified in ...
+  params <- c("x0", "y0", "z0", "vx0", "vy0", "vz0", "ax", "ay", "az")
   tb <- dat %>%
-    select(..., x0:az) %>%
-    group_by(...)
+    select(.dots = c(..., params)) %>%
+    group_by(.dots = ...)
   vars <- as.character(attr(tb, "vars"))
   if (summarise) {
     # average the PITCHf/x parameters over variables specified in ...
@@ -35,7 +35,7 @@ getLocations <- function(dat, ..., summarise = TRUE) {
   }
   # returns 3D array of locations of pitches over time
   value <- pitchRx::getSnapshots(as.data.frame(tb))
-  idx <- labs %>% unite(id, ..., sep = "@&")
+  idx <- labs %>% unite_("id", ..., sep = "@&")
   dimnames(value) <- list(idx = idx[, 1],
                           frame = seq_len(dim(value)[2]),
                           coordinate = c("x", "y", "z"))
