@@ -1,15 +1,19 @@
 library("dplyr")
 library("tidyr")
-library("DBI")
 library("animint")
 
 # This app is meant to run on Carson Sievert's machine,
 # but you _could_ run this locally by changing this bit to connect
-# to your own database. For instance: db <- src_sqlite("~/pitchRx.sqlite3")
-db <- src_postgres(dbname = 'pitchfx',
-                   user = 'postgres',
-                   password = Sys.getenv("POSTGRES_PWD"),
-                   port = '5432', host = "localhost")
+# to your own database. For instance: 
+if (Sys.info()$nodename == "Carsons-MacBook-Pro.local") {
+  db <- src_sqlite("~/pitchRx.sqlite3")
+} else {
+  db <- src_postgres(dbname = 'pitchfx',
+                     user = 'postgres',
+                     password = Sys.getenv("POSTGRES_PWD"),
+                     port = '5432', host = "localhost")
+}
+
 
 # https://gist.github.com/cpsievert/da555f08f3c9ba2c0b8e
 getLocations <- function(dat, ..., summarise = TRUE) {
@@ -68,6 +72,8 @@ shinyServer(function(input, output, session) {
     cpa <- collect(pa)
   })
   
+  dat <- getLocations(cpa, pitcher_name, pitch_type, summarise = TRUE)
+  
   output$summery <- renderPrint({
     if (restricted) {
       warning(paste0("You've requested more than", threshold, " records.
@@ -76,7 +82,6 @@ shinyServer(function(input, output, session) {
   })
   
   output$series <- renderAnimint({
-    dat <- getLocations(cpa, pitcher_name, pitch_type, summarise = TRUE)
     p <- ggplot() + 
       geom_point(aes(x = x, y = z, color = pitch_type, 
                      showSelected = frame), data = dat) + 
