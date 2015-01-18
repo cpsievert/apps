@@ -54,8 +54,8 @@ shinyServer(function(input, output, session) {
   
   # avoid sending *all* game ids to the browser
   # http://shiny.rstudio.com/articles/selectize.html
-  updateInputs <- reactive({
-    valid.gids <- gids[input$dateRange[1] <= gids & gids <= input$dateRange[2]]
+  #updateInputs <- reactive({
+  #  valid.gids <- gids[input$dateRange[1] <= gids & gids <= input$dateRange[2]]
     updateSelectizeInput(session, 'game', 
                          choices = c("Any game" = "any", valid.gids), 
                          server = TRUE)
@@ -65,9 +65,9 @@ shinyServer(function(input, output, session) {
     updateSelectizeInput(session, 'batter',
                          choices = c("Any Batter" = "any", player.names),
                          server = TRUE)
-  })
+  #})
   
-  res <- updateInputs()
+  #res <- updateInputs()
   
   
   retrieve <- reactive({
