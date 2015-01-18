@@ -1,13 +1,22 @@
 library("dplyr")
 library("DBI")
+library("pitchRx")
+library("animint")
 
-# This app is really meant to run on Carson Sievert's machine,
+# This app is meant to run on Carson Sievert's machine,
 # but you _could_ run this locally by changing this bit to connect
 # to your own database. For instance: db <- src_sqlite("~/pitchRx.sqlite3")
 db <- src_postgres(dbname = 'pitchfx',
                   user = 'postgres',
                   password = Sys.getenv("POSTGRES_PWD"),
                   port = '5432', host = "localhost")
+
+# Field names are passed to ui.R so the user can pick which ones they want
+data(gids, package = "pitchRx")
+data(players, package = "pitchRx")
+player.names <- sort(players$full_name)
+# NOTE TO SELF: Have the app update the database as a nightly CRON job!
+dates <- as.Date(substr(gids, 5, 14), format = "%Y_%m_%d")
 
 # --------------------------------------------------------
 # Most of the code below is an effort to 'cache' some computations 
@@ -58,10 +67,3 @@ db <- src_postgres(dbname = 'pitchfx',
 #                                   FROM atbat
 #                                   WHERE pitcher_name != 'NA'")[,1]
 # saveRDS(pitcher_names, file = "away_teams.rds")
-
-# Field names are passed to ui.R so the user can pick which ones they want
-data(gids, package = "pitchRx")
-data(players, package = "pitchRx")
-player.names <- sort(players$full_name)
-# NOTE TO SELF: Have the app update the database as a nightly CRON job!
-dates <- as.Date(substr(gids, 5, 14), format = "%Y_%m_%d")
