@@ -52,9 +52,9 @@ shinyServer(function(input, output, session) {
     batter.name <- input$batter
     game <- input$game
     pa <- tbl(db, "pa") %>% filter(date >= start.date, date <= end.date)
-    if (game != "any") pa <- filter(pa, gameday_link %in% game)
-    if (pitcher.name != "any") pa <- filter(pa, pitcher_name %in% pitcher.name)
-    if (batter.name != "any") pa <- filter(pa, batter_name %in% batter.name)
+    if (game != "any") pa <- filter(pa, gameday_link == game)
+    if (pitcher.name != "any") pa <- filter(pa, pitcher_name == pitcher.name)
+    if (batter.name != "any") pa <- filter(pa, batter_name == batter.name)
     pa
   })
   
