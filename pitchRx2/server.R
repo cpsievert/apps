@@ -43,7 +43,7 @@ getLocations <- function(dat, ..., summarise = TRUE) {
 
 shinyServer(function(input, output, session) {
   
-  retrieve <- isolate({
+  retrieve <- reactive({
     # Both dplyr and shiny use non-standard evaluation -- https://groups.google.com/forum/#!topic/manipulatr/jESTCrOn7hI
     # For this reason, we create 'extra' objects for inputs
     start.date <- gsub("_", "-", as.character(input$dateRange[1]))
@@ -60,11 +60,13 @@ shinyServer(function(input, output, session) {
   
   # maximum allowed # of records
   threshold <- 5000
-  pa <- retrieve() 
-  restricted <- nrow(pa) >= threshold
-  pa <- pa %>% top_n(threshold)
-  # add a progress bar for this?
-  cpa <- collect(pa)
+  isolate({
+    pa <- retrieve() 
+    restricted <- nrow(pa) >= threshold
+    pa <- pa %>% top_n(threshold)
+    # add a progress bar for this?
+    cpa <- collect(pa)
+  })
   
   output$summery <- renderPrint({
     if (restricted) {
