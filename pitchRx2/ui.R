@@ -1,3 +1,6 @@
+data(gids, package = "pitchRx")
+dates <- as.Date(substr(gids, 5, 14), format = "%Y_%m_%d")
+
 shinyUI(fluidPage(
   column(2,
          dateRangeInput('dateRange',
