@@ -65,7 +65,9 @@ shinyServer(function(input, output, session) {
     updateSelectizeInput(session, 'batter',
                          choices = c("Any Batter" = "any", player.names),
                          server = TRUE)
-  })()
+  })
+  
+  res <- updateInputs()
   
   
   retrieve <- reactive({
