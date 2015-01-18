@@ -1,4 +1,5 @@
 library("pitchRx")
+library("animint")
 # Field names are passed to ui.R so the user can pick which ones they want
 data(gids, package = "pitchRx")
 data(players, package = "pitchRx")

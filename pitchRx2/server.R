@@ -1,5 +1,6 @@
 library("dplyr")
 library("DBI")
+library("pitchRx")
 library("animint")
 
 # This app is meant to run on Carson Sievert's machine,
@@ -9,7 +10,6 @@ db <- src_postgres(dbname = 'pitchfx',
                    user = 'postgres',
                    password = Sys.getenv("POSTGRES_PWD"),
                    port = '5432', host = "localhost")
-
 
 # https://gist.github.com/cpsievert/da555f08f3c9ba2c0b8e
 getLocations <- function(dat, ..., summarise = TRUE) {
