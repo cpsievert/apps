@@ -6,7 +6,7 @@ library("animint")
 # but you _could_ run this locally by changing this bit to connect
 # to your own database. For instance: 
 if (Sys.info()[["nodename"]] == "Carsons-MacBook-Pro.local") {
-  db <- src_sqlite("~/pitchRx.sqlite3")
+  db <- src_sqlite("~/pitchfx/pitchRx.sqlite3")
 } else {
   db <- src_postgres(dbname = 'pitchfx',
                      user = 'postgres',
@@ -45,7 +45,25 @@ getLocations <- function(dat, ..., summarise = TRUE) {
     spread(coordinate, value)
 } 
 
+data(gids, package = "pitchRx")
+data(players, package = "pitchRx")
+player.names <- sort(players$full_name)
+dates <- as.Date(substr(gids, 5, 14), format = "%Y_%m_%d")
+
 shinyServer(function(input, output, session) {
+  
+  # avoid sending *all* game ids to the browser
+  # http://shiny.rstudio.com/articles/selectize.html
+  valid.gids <- gids[input$dateRange[1] <= gids & gids <= input$dateRange[2]]
+  updateSelectizeInput(session, 'game', 
+                       choices = c("Any game" = "any", valid.gids), 
+                       server = TRUE)
+  updateSelectizeInput(session, 'pitcher', 
+                       choices = c("Any Pitcher" = "any", player.names), 
+                       server = TRUE)
+  updateSelectizeInput(session, 'batter',
+                       choices = c("Any Batter" = "any", player.names),
+                       server = TRUE)
   
   retrieve <- reactive({
     # Both dplyr and shiny use non-standard evaluation -- https://groups.google.com/forum/#!topic/manipulatr/jESTCrOn7hI
