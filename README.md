@@ -16,6 +16,7 @@ Click on any of the links below to view the app hosted on my server. If you see 
 * [intervals](http://104.131.111.111:3838/intervals)
 * [pitchRx](http://104.131.111.111:3838/pitchRx)
 * [pitchRx-db](http://104.131.111.111:3838/pitchRx-db)
+* [pitchRx2](http://104.131.111.111:3838/pitchRx2)
 * [regInf](http://104.131.111.111:3838/regInf)
 * [sampling](http://104.131.111.111:3838/sampling)
 * [testing](http://104.131.111.111:3838/testing)
