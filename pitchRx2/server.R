@@ -67,7 +67,7 @@ shinyServer(function(input, output, session) {
     # Filter data based on user criteria
     pa <- tbl(db, "pa") %>% filter(date >= input$dateRange[1], 
                                    date <= input$dateRange[2])
-    # UGLYYYYY, I should report to Hadley
+    # UGLYYYYY...I should report to Hadley
     if (is.valid(input$game)) {
       if (length(input$game) > 1) {
         pa <- filter(pa, gameday_link %in% input$game)

@@ -25,7 +25,7 @@ getLocations <- function(dat, ..., summarise = TRUE) {
                           frame = seq_len(dim(value)[2]),
                           coordinate = c("x", "y", "z"))
   # tidy things up in a format that ggplot would expect
-  value %>% as.tbl_cube %>% as.data.frame %>% rename_(value = ".") %>%
+  value %>% as.tbl_cube(met_name = "value") %>% as.data.frame %>%
     separate(idx, vars, sep = "@&") %>%
     spread(coordinate, value)
 } 
