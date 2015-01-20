@@ -2,7 +2,8 @@ data(gids, package = "pitchRx")
 dates <- as.Date(substr(gids, 5, 14), format = "%Y_%m_%d")
 
 shinyUI(fluidPage(
-  column(2,
+  column(4,
+    wellPanel(
          dateRangeInput('dateRange',
                         label = 'Select a date range:',
                         start = '2011-01-01', end = '2012-01-01',
@@ -27,6 +28,7 @@ shinyUI(fluidPage(
                         options = list(placeholder = 'All types')),
          br(),
          actionButton("query", "Send Query")
+    )
   ),
   column(10, animint::animintOutput("series"))
 ))
