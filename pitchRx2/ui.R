@@ -4,6 +4,8 @@ dates <- as.Date(substr(gids, 5, 14), format = "%Y_%m_%d")
 shinyUI(fluidPage(
   column(4,
     wellPanel(
+         HTML("See <a href='https://baseballwithr.wordpress.com/2015/01/20/querying-visualizing-pitchfx-with-shiny/'>my post</a> about this app"),
+         tags$hr(),
          dateRangeInput('dateRange',
                         label = 'Select a date range:',
                         start = '2011-01-01', end = '2012-01-01',
@@ -26,7 +28,7 @@ shinyUI(fluidPage(
                                     "Cutting Fastball" = "FC"),
                         selected = c("FF", "FC"), multiple = TRUE,
                         options = list(placeholder = 'All types')),
-         br(),
+         tags$hr(),
          actionButton("query", "Send Query")
     )
   ),
