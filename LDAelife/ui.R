@@ -38,12 +38,12 @@ shinyUI(bootstrapPage(
                                                                               "Kruskal's Non-Metric" = "kruskal",
                                                                               "Sammon's Non-Linear Mapping" = "sammon"))
     ),
-    div(style = widget_style, sliderInput("kmeans", "Number of clusters", min=1, max=10, value=1)),
+    div(style = widget_style, sliderInput("kmeans", "Number of clusters", min=1, max=10, value=1, width='300px')),
     div(style = widget_style,
-        sliderInput("nTerms", "Number of terms", min=1, max=50, value=30)
+        sliderInput("nTerms", "Number of terms", min=1, max=50, value=30, width='300px')
     ), 
     div(style = widget_style,
-        sliderInput("lambda", "Value of lambda", min=0, max=1, value=0.6)
+        sliderInput("lambda", "Value of lambda", min=0, max=1, value=0.6, width='300px')
     )
   ),
   
