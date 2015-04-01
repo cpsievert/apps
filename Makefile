@@ -2,8 +2,7 @@
 serve:
 	cd /srv/shiny_apps && git pull origin master
 
-readme:
+# update links
+local:
 	Rscript -e 'knitr::knit("README.Rmd")'
-
-all: readme
 
