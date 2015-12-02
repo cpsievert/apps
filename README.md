@@ -7,6 +7,7 @@ A collection of some [shiny](http://cran.r-project.org/web/packages/shiny/index.
 
 Click on any of the links below to view the app hosted on my server. If you see anything that doesn't look right, [please let me know](https://github.com/cpsievert/shiny_apps/issues/new)!
 
+* [brush2plotly](http://104.131.111.111:3838/brush2plotly)
 * [cdf](http://104.131.111.111:3838/cdf)
 * [CLT](http://104.131.111.111:3838/CLT)
 * [extend1](http://104.131.111.111:3838/extend1)
