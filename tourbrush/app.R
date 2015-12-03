@@ -10,7 +10,7 @@ fps <- 30
 # initiate tour
 mat <- rescale(as.matrix(subset(iris, select = Sepal.Length:Petal.Width)))
 tour <- new_tour(mat, grand_tour(), NULL)
-step <- tour(0)
+step <- tour(aps / fps)
 
 cols <- RColorBrewer::brewer.pal(9, "Pastel1")
 
@@ -31,8 +31,8 @@ ui <- bootstrapPage(
   # controls
   sidebarPanel(
     selectInput("color", "Paint brush color", choices = cols),
-    actionButton("clearBrush", "Clear Brush"),
-    checkboxInput("pause", "Pause Tour", TRUE)
+    checkboxInput("step", "Step through tour", FALSE),
+    actionButton("clearBrush", "Clear Brush")
   ),
   # views
   mainPanel(
@@ -46,24 +46,26 @@ server <- function(input, output, session) {
   # standing on the shoulders of giants, as they say
   # https://github.com/rstudio/ggvis/blob/master/demo/tourr.r
   tourDat <- reactive({
-    if (!input$pause) {
+    if (input$step) {
       invalidateLater(1000 / fps, NULL)
-      step <- tour(aps / fps)
     }
+    step <- tour(aps / fps)
     df <- data.frame(center(mat %*% step$proj))
     setNames(df, c("x", "y"))
+  })
+  
+  observeEvent(input$clearBrush, {
+    selection(TRUE, "black")
   })
   
   updateSelection <- reactive({
     br <- input$brush
     d <- tourDat()
     # pay attention to brush when paused
-    d$color <- if (input$pause && !is.null(br)) {
+    d$color <- if (!input$step && !is.null(br)) {
       x <- br$xmin <= d$x & d$x <= br$xmax
       y <- br$ymin <= d$y & d$y <= br$ymax
       selection(x & y, input$color)
-    } else if (isTRUE(input$clearBrush)) {
-      selection(TRUE, "black")
     } else {
       selection()
     }
@@ -71,7 +73,7 @@ server <- function(input, output, session) {
   })
   
   output$scatter1 <- renderPlot({
-    if (input$pause) {
+    if (!input$step) {
       ggplot(updateSelection(), aes(x, y, color = color)) + 
         geom_point() + scale_color_identity() + theme_bw() + 
         xlim(-1, 1) + ylim(-1, 1) + xlab("") + ylab("")
