@@ -15,19 +15,18 @@ ui <- fluidPage(
 
 server <- function(input, output, session) {
   output$heat <- renderPlotly({
-    plot_ly(x = nms, y = nms, z = m, key = m, type = "heatmap") %>%
-      layout(xaxis = list(title = ""), yaxis = list(title = ""))
+    plot_ly(x = nms, y = nms, z = m, key = m, 
+            type = "heatmap") %>%
+      layout(xaxis = list(title = ""), 
+             yaxis = list(title = ""))
   })
   
-  rv <- reactive({
-    # the 'group' here should match the 'set' in plot_ly() 
-    # (this naming is likely to change)
-    cv <- crosstalk::ClientValue$new("plotly_click", group = "A")
-    cv$get()
-  })
+  # the 'group' here should match the 'set' in plot_ly() 
+  # (this naming is likely to change)
+  cv <- crosstalk::ClientValue$new("plotly_click", group = "A")
   
   output$selection <- renderPrint({
-    s <- rv()
+    s <- cv$get()
     if (length(s) == 0) {
       "Click on a cell in the heatmap to display a scatterplot"
     } else {
@@ -37,7 +36,7 @@ server <- function(input, output, session) {
   })
   
   output$scatterplot <- renderPlotly({
-    s <- rv()
+    s <- cv$get()
     if (length(s)) {
       vars <- c(s[["x"]], s[["y"]])
       d <- setNames(mtcars[vars], c("x", "y"))
@@ -45,7 +44,8 @@ server <- function(input, output, session) {
       plot_ly(d, x = x, y = y, mode = "markers") %>%
         add_trace(x = x, y = yhat, mode = "lines") %>%
         layout(xaxis = list(title = s[["x"]]), 
-               yaxis = list(title = s[["y"]]), showlegend = FALSE)
+               yaxis = list(title = s[["y"]]), 
+               showlegend = FALSE)
     } else {
       plot_ly()
     }
