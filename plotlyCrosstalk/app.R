@@ -2,7 +2,7 @@ library(plotly)
 library(shiny)
 
 # compute a correlation matrix
-m <- round(cor(mtcars), 3)
+correlation <- round(cor(mtcars), 3)
 nms <- names(mtcars)
 
 ui <- fluidPage(
@@ -15,8 +15,8 @@ ui <- fluidPage(
 
 server <- function(input, output, session) {
   output$heat <- renderPlotly({
-    plot_ly(x = nms, y = nms, z = m, key = m, 
-            type = "heatmap") %>%
+    plot_ly(x = nms, y = nms, z = correlation, 
+            key = correlation, type = "heatmap") %>%
       layout(xaxis = list(title = ""), 
              yaxis = list(title = ""))
   })
