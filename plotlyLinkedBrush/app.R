@@ -1,9 +1,6 @@
 library(plotly)
 library(shiny)
 
-# create a key row identifier for mapping selection(s) back to the data
-iris$key <- seq_len(nrow(iris))
-
 # user interface
 ui <- fluidPage(
   titlePanel("Linked highlighting with plotly and shiny"),
@@ -69,7 +66,7 @@ server <- function(input, output, session) {
   
   output$xy <- renderPlotly({
     iris %>% 
-      plot_ly(x = Petal.Width, y = Sepal.Width, key = key, mode = "markers") %>%
+      plot_ly(x = Petal.Width, y = Sepal.Width, mode = "markers") %>%
       layout(dragmode = "select")
   })
   
