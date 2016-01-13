@@ -19,6 +19,10 @@ ui <- fluidPage(
   )
 )
 
+# marker objects
+m <- list(color = toRGB("black"))
+m2 <- list(color = toRGB("black", 0.2))
+
 server <- function(input, output, session) {
   # mechanism to access the 'plotly_selected' user event
   cv <- crosstalk::ClientValue$new("plotly_selected", group = "A")
@@ -34,14 +38,16 @@ server <- function(input, output, session) {
   
   # the 'x' histogram
   output$x <- renderPlotly({
-    x <- iris$Petal.Width
+    x <- cars$speed
     xbins <- compute_bins(x, input$xbins)
-    p <- plot_ly(x = x, type = "histogram", autobinx = F, xbins = xbins)
+    p <- plot_ly(x = x, type = "histogram", autobinx = F, 
+                 xbins = xbins, marker = m2)
     # obtain plotlyjs selection
     s <- cv$get()
     # if points are selected, subset the data, and highlight
     if (length(s$x) > 0) {
-      p <- add_trace(p, x = s$x, type = "histogram", autobinx = F, xbins = xbins)
+      p <- add_trace(p, x = s$x, type = "histogram", autobinx = F, 
+                     xbins = xbins, marker = m)
     }
     p %>%
       config(displayModeBar = F, showLink = F) %>%
@@ -51,12 +57,14 @@ server <- function(input, output, session) {
   
   # basically the same as 'x' histogram
   output$y <- renderPlotly({
-    y <- iris$Sepal.Width
+    y <- cars$dist
     ybins <- compute_bins(y, input$ybins)
-    p <- plot_ly(y = y, type = "histogram", autobiny = F, ybins = ybins)
+    p <- plot_ly(y = y, type = "histogram", autobiny = F, 
+                 ybins = ybins, marker = m2)
     s <- cv$get()
     if (length(s$y) > 0) {
-      p <- add_trace(p, y = s$y, type = "histogram", autobiny = F, ybins = ybins)
+      p <- add_trace(p, y = s$y, type = "histogram", autobiny = F, 
+                     ybins = ybins, marker = m)
     }
     p %>%
       config(displayModeBar = F, showLink = F) %>%
@@ -65,8 +73,9 @@ server <- function(input, output, session) {
   })
   
   output$xy <- renderPlotly({
-    iris %>% 
-      plot_ly(x = Petal.Width, y = Sepal.Width, mode = "markers") %>%
+    cars %>% 
+      plot_ly(x = speed, y = dist, 
+              mode = "markers", marker = m) %>%
       layout(dragmode = "select")
   })
   
