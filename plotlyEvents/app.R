@@ -1,1 +1,1 @@
-shiny::runApp(system.file("examples", "events", package = "plotly"))
+source(system.file("examples", "events", "app.R", package = "plotly"))
