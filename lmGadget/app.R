@@ -86,4 +86,4 @@ lmGadget <- function(dat, x, y) {
   runGadget(ui, server)
 }
 
-m <- lmGadget(mtcars, "wt", "mpg")
+lmGadget(mtcars, "wt", "mpg")
