@@ -5,7 +5,7 @@ library(shiny)
 ui <- fluidPage(
   titlePanel("Linked highlighting with plotly and shiny"),
   mainPanel(
-    plotlyOutput("x", width = 400, height = 250, inline = T),
+    htmltools::div(style = "display:inline-block", plotlyOutput("x", width = 400, height = 250)),
     wellPanel(
       style = "display:inline-block; vertical-align:top;", 
       sliderInput("xbins", "Number of x bins", 
@@ -14,8 +14,8 @@ ui <- fluidPage(
                   min = 1, max = 50, value = 20, width = 250)
     ),
     br(),
-    plotlyOutput("xy", width = 400, height = 400, inline = T),
-    plotlyOutput("y", width = 250, height = 400, inline = T)
+    htmltools::div(style = "display:inline-block", plotlyOutput("xy", width = 400, height = 400)),
+    htmltools::div(style = "display:inline-block", plotlyOutput("y", width = 250, height = 400))
   )
 )
 
@@ -24,8 +24,6 @@ m <- list(color = toRGB("black"))
 m2 <- list(color = toRGB("black", 0.2))
 
 server <- function(input, output, session) {
-  # mechanism to access the 'plotly_selected' user event
-  cv <- crosstalk::ClientValue$new("plotly_selected", group = "A")
   
   # convenience function for computing xbin/ybin object given a number of bins
   compute_bins <- function(x, n) {
@@ -43,7 +41,7 @@ server <- function(input, output, session) {
     p <- plot_ly(x = x, type = "histogram", autobinx = F, 
                  xbins = xbins, marker = m2)
     # obtain plotlyjs selection
-    s <- cv$get()
+    s <- event_data("plotly_selected")
     # if points are selected, subset the data, and highlight
     if (length(s$x) > 0) {
       p <- add_trace(p, x = s$x, type = "histogram", autobinx = F, 
@@ -61,7 +59,7 @@ server <- function(input, output, session) {
     ybins <- compute_bins(y, input$ybins)
     p <- plot_ly(y = y, type = "histogram", autobiny = F, 
                  ybins = ybins, marker = m2)
-    s <- cv$get()
+    s <- event_data("plotly_selected")
     if (length(s$y) > 0) {
       p <- add_trace(p, y = s$y, type = "histogram", autobiny = F, 
                      ybins = ybins, marker = m)

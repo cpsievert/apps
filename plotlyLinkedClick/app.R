@@ -21,12 +21,8 @@ server <- function(input, output, session) {
              yaxis = list(title = ""))
   })
   
-  # the 'group' here should match the 'set' in plot_ly() 
-  # (this naming is likely to change)
-  cv <- crosstalk::ClientValue$new("plotly_click", group = "A")
-  
   output$selection <- renderPrint({
-    s <- cv$get()
+    s <- event_data("plotly_click")
     if (length(s) == 0) {
       "Click on a cell in the heatmap to display a scatterplot"
     } else {
@@ -36,7 +32,7 @@ server <- function(input, output, session) {
   })
   
   output$scatterplot <- renderPlotly({
-    s <- cv$get()
+    s <- event_data("plotly_click")
     if (length(s)) {
       vars <- c(s[["x"]], s[["y"]])
       d <- setNames(mtcars[vars], c("x", "y"))
