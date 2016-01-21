@@ -1,0 +1,1 @@
+shiny::runApp(system.file("examples", "events", package = "plotly"))
