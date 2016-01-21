@@ -17,7 +17,6 @@ Click on any of the links below to view the app hosted on my server. If you see 
 * [ggtree](http://104.131.111.111:3838/ggtree)
 * [intervals](http://104.131.111.111:3838/intervals)
 * [LDAelife](http://104.131.111.111:3838/LDAelife)
-* [lmGadget](http://104.131.111.111:3838/lmGadget)
 * [pitchRx](http://104.131.111.111:3838/pitchRx)
 * [pitchRx-db](http://104.131.111.111:3838/pitchRx-db)
 * [pitchRx2](http://104.131.111.111:3838/pitchRx2)
