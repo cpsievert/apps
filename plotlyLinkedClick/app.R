@@ -1,3 +1,6 @@
+# git checkout feature/transmit
+# R CMD install ./
+
 library(plotly)
 library(shiny)
 
