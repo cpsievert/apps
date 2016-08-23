@@ -1,0 +1,2 @@
+library(zikar)
+explore()
