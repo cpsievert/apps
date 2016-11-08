@@ -12,6 +12,7 @@ Click on any of the links below to view the app hosted on my server. If you see 
 * [cdf](http://104.131.111.111:3838/cdf)
 * [clearBrush](http://104.131.111.111:3838/clearBrush)
 * [CLT](http://104.131.111.111:3838/CLT)
+* [eechidna](http://104.131.111.111:3838/eechidna)
 * [ggtree](http://104.131.111.111:3838/ggtree)
 * [intervals](http://104.131.111.111:3838/intervals)
 * [LDAelife](http://104.131.111.111:3838/LDAelife)
