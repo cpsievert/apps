@@ -1,0 +1,2 @@
+library(bcviz)
+launch()
