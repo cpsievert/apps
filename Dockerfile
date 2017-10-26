@@ -15,7 +15,8 @@ RUN apt-get update \
   && wget --no-verbose "https://s3.amazonaws.com/rstudio-shiny-server-os-build/ubuntu-12.04/x86_64/shiny-server-$VERSION-amd64.deb" -O ss-latest.deb \
   && gdebi -n ss-latest.deb \
   && rm -f version.txt ss-latest.deb \
-  && Rscript -e "update.packages(ask=FALSE); devtools::install_github('cpsievert/shiny_apps')"
+  && Rscript -e "update.packages(ask=FALSE)" \
+  && Rscript -e "devtools::install_github('cpsievert/shiny_apps')"
   
 EXPOSE 3838
 
