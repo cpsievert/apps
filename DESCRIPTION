@@ -1,0 +1,30 @@
+Package: shinyApps
+Title: This is not (really) an R package. It just provides a means for installing R packages for this repo of shiny apps
+Version: 0.0.0.9000
+Authors@R: c(person("Carson", "Sievert", role = c("aut", "cre"), email = "cpsievert1@gmail.com"))
+Description: This is not (really) an R package. It just provides a means for installing R packages for this repo of shiny apps
+Imports:
+  mvtnorm,
+  MASS,
+  Cairo,
+  DBI,
+  animation,
+  shinyAce,
+  listviewer,
+  shinyjs,
+  shinyRGL,
+  pitchRx,
+  babynames,
+  plotly,
+  animint,
+  zikar,
+  eechidna,
+  tourbrush
+Encoding: UTF-8
+LazyData: true
+Remotes:
+  cpsievert/zikar,
+  cpsievert/tourbrush,
+  cpsievert/housing-data-challenge-plotly,
+  ropenscilabs/eechidna,
+  tdhock/animint
