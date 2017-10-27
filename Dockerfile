@@ -20,6 +20,16 @@ RUN apt-get update \
   && rm -f version.txt ss-latest.deb \
   && Rscript -e "update.packages(ask=FALSE)" \
   && Rscript -e "devtools::install_github('cpsievert/shiny_apps')"
-  
+
 EXPOSE 3838
 
+# copy over source code for the apps 
+# (this assumes the default config sets `site_dir /srv/shiny-server`)
+# http://docs.rstudio.com/shiny-server/#default-configuration
+ADD apps /srv/shiny-server/
+
+# copy over a shim for starting up the shiny server process,
+# grant permissions, and start-up
+COPY shiny-server.sh /usr/bin/shiny-server.sh
+RUN chmod +x /usr/bin/shiny-server.sh
+CMD ["/usr/bin/shiny-server.sh"]
