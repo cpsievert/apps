@@ -16,7 +16,6 @@ Imports:
   pitchRx,
   babynames,
   plotly,
-  animint,
   zikar,
   eechidna,
   tourbrush
@@ -27,4 +26,4 @@ Remotes:
   cpsievert/tourbrush,
   cpsievert/housing-data-challenge-plotly,
   ropenscilabs/eechidna,
-  tdhock/animint
+  hadley/ggplot2
