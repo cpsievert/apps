@@ -1,28 +1,25 @@
----
-title: "My personal repo of shiny apps"
-output: github_document
----
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+My shiny apps <img src="https://www.rstudio.com/wp-content/uploads/2014/04/shiny.png" width=100 align="right" />
+================================================================================================================
 
-# My repo of shiny apps <img src="https://www.rstudio.com/wp-content/uploads/2014/04/shiny.png" align="right" />
-
-A repo for running my (public) [shiny](http://cran.r-project.org/web/packages/shiny/index.html) apps. 
+A repo for running my (public) [shiny](http://cran.r-project.org/web/packages/shiny/index.html) apps.
 
 TODO: build/add link to shiny.cpsievert.me with links to all the apps.
 
-## Run a shiny server with all these apps via docker
+Run a shiny server with all these apps via docker
+-------------------------------------------------
 
-```shell
+``` shell
 docker run -p 3838:3838 cpsievert/shiny_apps
 ```
 
 Now visit <http://localhost:3838>
 
+Download, build, and run manually
+---------------------------------
 
-## Download, build, and run manually
-
-```shell
+``` shell
 git clone https://github.com/cpsievert/shiny_apps.git
 cd shiny_apps
 docker build -t shiny_apps .

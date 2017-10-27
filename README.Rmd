@@ -1,11 +1,10 @@
 ---
-title: "My personal repo of shiny apps"
 output: github_document
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# My repo of shiny apps <img src="https://www.rstudio.com/wp-content/uploads/2014/04/shiny.png" align="right" />
+# My shiny apps <img src="https://www.rstudio.com/wp-content/uploads/2014/04/shiny.png" width=100 align="right" />
 
 A repo for running my (public) [shiny](http://cran.r-project.org/web/packages/shiny/index.html) apps. 
 
