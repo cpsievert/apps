@@ -1,6 +1,7 @@
 From rocker/geospatial:latest
 Maintainer "Carson Sievert" cpsievert1@gmail.com
 
+# update/install system libraries, install shiny server, and update R packages
 RUN apt-get update \
   && apt-get upgrade -y \
   # install add-apt-repository command, so can install libjq
@@ -18,15 +19,21 @@ RUN apt-get update \
   && wget --no-verbose "https://s3.amazonaws.com/rstudio-shiny-server-os-build/ubuntu-12.04/x86_64/shiny-server-$VERSION-amd64.deb" -O ss-latest.deb \
   && gdebi -n ss-latest.deb \
   && rm -f version.txt ss-latest.deb \
-  && Rscript -e "update.packages(ask=FALSE)" \
-  && Rscript -e "devtools::install_github('cpsievert/shiny_apps')"
+  && Rscript -e "update.packages(ask=FALSE)" 
 
-EXPOSE 3838
-
-# copy over source code for the apps 
+# transfer over source code for the apps from host
 # (this assumes the default config sets `site_dir /srv/shiny-server`)
 # http://docs.rstudio.com/shiny-server/#default-configuration
 ADD apps /srv/shiny-server/
+
+# copy over DESCRIPTION file which has all the R packages
+# required to run the apps
+COPY DESCRIPTION /srv/shiny-server/DESCRIPTION
+RUN Rscript -e "devtools::install('/srv/shiny-server')"
+
+# Expose the port shiny is listening to
+# TODO: make pretty URLs https://deanattali.com/2015/05/09/setup-rstudio-shiny-server-digital-ocean/
+EXPOSE 3838
 
 # copy over a shim for starting up the shiny server process,
 # grant permissions, and start-up
