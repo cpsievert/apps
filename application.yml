@@ -1,0 +1,34 @@
+shiny:
+  proxy:
+    title: Carson Sievert's Shiny Applications
+    logo-url: https://cpsievert.me/favicon.ico
+    landing-page: /
+    heartbeat-rate: 10000
+    heartbeat-timeout: 60000
+    port: 8080
+    admin-groups: admin
+    # https://www.shinyproxy.io/configuration/#simple-authentication
+    authentication: simple
+    users:
+    - name: shiny
+      password: shiny
+      groups: public
+    - name: cpsievert
+      password: 
+      groups: admin
+    # Note that this configuration shouldn't be used in enterprise/production
+    # environments -- https://www.shinyproxy.io/configuration/#docker
+    docker:
+      cert-path: /home/none
+      url: http://localhost:2375
+      port-range-start: 20000
+  apps:
+  - name: 3Dnormal
+    display-name: Linked brushing in a grand tour of 3-dimensional data
+    description: Linked brushing in a grand tour of 3-dimensional data.
+    docker-cmd: ["R", "-e 'shiny::runApp(\"apps/3Dnormal\")'"]
+    docker-image: cpsievert/3Dnormal
+
+logging:
+  file:
+    shinyproxy.log
