@@ -1,34 +1,10 @@
-FROM rocker/r-ver:latest
+FROM cpsievert/shiny_apps:latest
 MAINTAINER Carson Sievert "cpsievert1@gmail.com"
 
-# system libraries of general use
-RUN apt-get update && apt-get install -y \
-    sudo \
-    pandoc \
-    pandoc-citeproc \
-    libcurl4-gnutls-dev \
-    libcairo2-dev \
-    libxt-dev \
-    libssl-dev \
-    libssh2-1-dev \
-    libssl1.0.0
-
-# basic shiny functionality
-RUN R -e "install.packages(c('shiny', 'rmarkdown'))"
-
-# system library dependency for the euler app
-RUN apt-get update && apt-get install -y \
-    libmpfr-dev
-
-# install dependencies of the euler app
-RUN R -e "install.packages('Rmpfr')"
+# IDEA: use `rsconnect::appDependencies()` to automatically infer/install dependencies of the app!?
 
 # copy the app to the image
-RUN mkdir /root/euler
-COPY euler /root/euler
+COPY ./ ./
 
-COPY Rprofile.site /usr/lib/R/etc/
-
-EXPOSE 3838
-
+# run the app
 CMD ["R", "-e shiny::runApp()"]
