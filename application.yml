@@ -26,132 +26,132 @@ shiny:
   - name: 3Dnormal
     display-name: Linked brushing in a grand tour of 3-dimensional data
     description: Linked brushing in a grand tour of 3-dimensional data.
-    docker-cmd: ["R", "-e 'shiny::runApp(\"apps/3Dnormal\", port = 3838)'"]
+    docker-cmd: R -e 'shiny::runApp(port=3838, host="0.0.0.0")'
     docker-image: cpsievert/shiny_apps:3Dnormal
   - name: bcviz
-    display-name: ...
+    display-name: bcviz
     description: ...
-    docker-cmd: ["R", "-e 'shiny::runApp(\"apps/bcviz\", port = 3838)'"]
+    docker-cmd: R -e 'shiny::runApp(port=3838, host="0.0.0.0")'
     docker-image: cpsievert/shiny_apps:bcviz
   - name: brush2plotly
-    display-name: ...
+    display-name: brush2plotly
     description: ...
-    docker-cmd: ["R", "-e 'shiny::runApp(\"apps/brush2plotly\", port = 3838)'"]
+    docker-cmd: R -e 'shiny::runApp(port=3838, host="0.0.0.0")'
     docker-image: cpsievert/shiny_apps:brush2plotly
   - name: cdf
-    display-name: ...
+    display-name: cdf
     description: ...
-    docker-cmd: ["R", "-e 'shiny::runApp(\"apps/cdf\", port = 3838)'"]
+    docker-cmd: R -e 'shiny::runApp(port=3838, host="0.0.0.0")'
     docker-image: cpsievert/shiny_apps:cdf
   - name: clearBrush
-    display-name: ...
+    display-name: clearBrush
     description: ...
-    docker-cmd: ["R", "-e 'shiny::runApp(\"apps/clearBrush\", port = 3838)'"]
+    docker-cmd: R -e 'shiny::runApp(port=3838, host="0.0.0.0")'
     docker-image: cpsievert/shiny_apps:clearBrush
   - name: CLT
-    display-name: ...
+    display-name: CLT
     description: ...
-    docker-cmd: ["R", "-e 'shiny::runApp(\"apps/CLT\", port = 3838)'"]
+    docker-cmd: R -e 'shiny::runApp(port=3838, host="0.0.0.0")'
     docker-image: cpsievert/shiny_apps:CLT
   - name: eechidna
-    display-name: ...
+    display-name: eechidna
     description: ...
-    docker-cmd: ["R", "-e 'shiny::runApp(\"apps/eechidna\", port = 3838)'"]
+    docker-cmd: R -e 'shiny::runApp(port=3838, host="0.0.0.0")'
     docker-image: cpsievert/shiny_apps:eechidna
   - name: ggtree
-    display-name: ...
+    display-name: ggtree
     description: ...
-    docker-cmd: ["R", "-e 'shiny::runApp(\"apps/ggtree\", port = 3838)'"]
+    docker-cmd: R -e 'shiny::runApp(port=3838, host="0.0.0.0")'
     docker-image: cpsievert/shiny_apps:ggtree
   - name: intervals
-    display-name: ...
+    display-name: intervals
     description: ...
-    docker-cmd: ["R", "-e 'shiny::runApp(\"apps/intervals\", port = 3838)'"]
+    docker-cmd: R -e 'shiny::runApp(port=3838, host="0.0.0.0")'
     docker-image: cpsievert/shiny_apps:intervals
   - name: LDAelife
-    display-name: ...
+    display-name: LDAelife
     description: ...
-    docker-cmd: ["R", "-e 'shiny::runApp(\"apps/LDAelife\", port = 3838)'"]
+    docker-cmd: R -e 'shiny::runApp(port=3838, host="0.0.0.0")'
     docker-image: cpsievert/shiny_apps:LDAelife
   - name: lmGadget
-    display-name: ...
+    display-name: lmGadget
     description: ...
-    docker-cmd: ["R", "-e 'shiny::runApp(\"apps/lmGadget\", port = 3838)'"]
+    docker-cmd: R -e 'shiny::runApp(port=3838, host="0.0.0.0")'
     docker-image: cpsievert/shiny_apps:lmGadget
   - name: pitchRx
-    display-name: ...
+    display-name: pitchRx
     description: ...
-    docker-cmd: ["R", "-e 'shiny::runApp(\"apps/pitchRx\", port = 3838)'"]
+    docker-cmd: R -e 'shiny::runApp(port=3838, host="0.0.0.0")'
     docker-image: cpsievert/shiny_apps:pitchRx
   - name: pitchRx-db
-    display-name: ...
+    display-name: pitchRx-db
     description: ...
-    docker-cmd: ["R", "-e 'shiny::runApp(\"apps/pitchRx-db\", port = 3838)'"]
+    docker-cmd: R -e 'shiny::runApp(port=3838, host="0.0.0.0")'
     docker-image: cpsievert/shiny_apps:pitchRx-db
   - name: pitchRx2
-    display-name: ...
+    display-name: pitchRx2
     description: ...
-    docker-cmd: ["R", "-e 'shiny::runApp(\"apps/pitchRx2\", port = 3838)'"]
+    docker-cmd: R -e 'shiny::runApp(port=3838, host="0.0.0.0")'
     docker-image: cpsievert/shiny_apps:pitchRx2
   - name: plotlyAg
-    display-name: ...
+    display-name: plotlyAg
     description: ...
-    docker-cmd: ["R", "-e 'shiny::runApp(\"apps/plotlyAg\", port = 3838)'"]
+    docker-cmd: R -e 'shiny::runApp(port=3838, host="0.0.0.0")'
     docker-image: cpsievert/shiny_apps:plotlyAg
   - name: plotlyEvents
-    display-name: ...
+    display-name: plotlyEvents
     description: ...
-    docker-cmd: ["R", "-e 'shiny::runApp(\"apps/plotlyEvents\", port = 3838)'"]
+    docker-cmd: R -e 'shiny::runApp(port=3838, host="0.0.0.0")'
     docker-image: cpsievert/shiny_apps:plotlyEvents
   - name: plotlyLinkedBrush
-    display-name: ...
+    display-name: plotlyLinkedBrush
     description: ...
-    docker-cmd: ["R", "-e 'shiny::runApp(\"apps/plotlyLinkedBrush\", port = 3838)'"]
+    docker-cmd: R -e 'shiny::runApp(port=3838, host="0.0.0.0")'
     docker-image: cpsievert/shiny_apps:plotlyLinkedBrush
   - name: plotlyLinkedClick
-    display-name: ...
+    display-name: plotlyLinkedClick
     description: ...
-    docker-cmd: ["R", "-e 'shiny::runApp(\"apps/plotlyLinkedClick\", port = 3838)'"]
+    docker-cmd: R -e 'shiny::runApp(port=3838, host="0.0.0.0")'
     docker-image: cpsievert/shiny_apps:plotlyLinkedClick
   - name: plotlyViewer
-    display-name: ...
+    display-name: plotlyViewer
     description: ...
-    docker-cmd: ["R", "-e 'shiny::runApp(\"apps/plotlyViewer\", port = 3838)'"]
+    docker-cmd: R -e 'shiny::runApp(port=3838, host="0.0.0.0")'
     docker-image: cpsievert/shiny_apps:plotlyViewer
   - name: regInf
-    display-name: ...
+    display-name: regInf
     description: ...
-    docker-cmd: ["R", "-e 'shiny::runApp(\"apps/regInf\", port = 3838)'"]
+    docker-cmd: R -e 'shiny::runApp(port=3838, host="0.0.0.0")'
     docker-image: cpsievert/shiny_apps:regInf
   - name: sampling
-    display-name: ...
+    display-name: sampling
     description: ...
-    docker-cmd: ["R", "-e 'shiny::runApp(\"apps/sampling\", port = 3838)'"]
+    docker-cmd: R -e 'shiny::runApp(port=3838, host="0.0.0.0")'
     docker-image: cpsievert/shiny_apps:sampling
   - name: testing
-    display-name: ...
+    display-name: testing
     description: ...
-    docker-cmd: ["R", "-e 'shiny::runApp(\"apps/testing\", port = 3838)'"]
+    docker-cmd: R -e 'shiny::runApp(port=3838, host="0.0.0.0")'
     docker-image: cpsievert/shiny_apps:testing
   - name: testing2
-    display-name: ...
+    display-name: testing2
     description: ...
-    docker-cmd: ["R", "-e 'shiny::runApp(\"apps/testing2\", port = 3838)'"]
+    docker-cmd: R -e 'shiny::runApp(port=3838, host="0.0.0.0")'
     docker-image: cpsievert/shiny_apps:testing2
   - name: topnames
-    display-name: ...
+    display-name: topnames
     description: ...
-    docker-cmd: ["R", "-e 'shiny::runApp(\"apps/topnames\", port = 3838)'"]
+    docker-cmd: R -e 'shiny::runApp(port=3838, host="0.0.0.0")'
     docker-image: cpsievert/shiny_apps:topnames
   - name: worldBank-ggvis
-    display-name: ...
+    display-name: worldBank-ggvis
     description: ...
-    docker-cmd: ["R", "-e 'shiny::runApp(\"apps/worldBank-ggvis\", port = 3838)'"]
+    docker-cmd: R -e 'shiny::runApp(port=3838, host="0.0.0.0")'
     docker-image: cpsievert/shiny_apps:worldBank-ggvis
   - name: zikar
-    display-name: ...
+    display-name: zikar
     description: ...
-    docker-cmd: ["R", "-e 'shiny::runApp(\"apps/zikar\", port = 3838)'"]
+    docker-cmd: R -e 'shiny::runApp(port=3838, host="0.0.0.0")'
     docker-image: cpsievert/shiny_apps:zikar
 
 logging:

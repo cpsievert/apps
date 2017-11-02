@@ -1,6 +1,7 @@
 .Rproj.user
 .Rhistory
 .RData
+shinyproxy.log
 shinyproxy-*.jar
 */shinyapps/
 pitchRx/interactiveFX/

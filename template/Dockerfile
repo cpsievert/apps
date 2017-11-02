@@ -1,4 +1,4 @@
-FROM cpsievert/shiny_apps:latest
+FROM shiny_apps:latest
 MAINTAINER Carson Sievert "cpsievert1@gmail.com"
 
 # IDEA: use `rsconnect::appDependencies()` to automatically infer/install dependencies of the app!?
@@ -7,4 +7,4 @@ MAINTAINER Carson Sievert "cpsievert1@gmail.com"
 COPY ./ ./
 
 # run the app
-CMD ["R", "-e shiny::runApp(port=3838)"]
+CMD R -e 'shiny::runApp(port=3838, host="0.0.0.0")'
