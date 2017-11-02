@@ -7,4 +7,4 @@ MAINTAINER Carson Sievert "cpsievert1@gmail.com"
 COPY ./ ./
 
 # run the app
-CMD ["R", "-e shiny::runApp()"]
+CMD ["R", "-e shiny::runApp(port=3838)"]

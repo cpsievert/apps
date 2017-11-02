@@ -1,9 +1,9 @@
 FROM cpsievert/shiny_apps:latest
 MAINTAINER Carson Sievert "cpsievert1@gmail.com"
 
-RUN R -e "install.packages('remotes'); remotes::install_github('cpsievert/housing-data-challenge-plotly')"
+RUN R -e "remotes::install_github('cpsievert/housing-data-challenge-plotly')"
 
 # copy the app to the image
 COPY ./ ./
 
-CMD ["R", "-e shiny::runApp()"]
+CMD ["R", "-e shiny::runApp(port=3838)"]

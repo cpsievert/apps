@@ -9,4 +9,4 @@ COPY ./ ./
 
 EXPOSE 3838
 
-CMD ["R", "-e shiny::runApp()"]
+CMD ["R", "-e shiny::runApp(port=3838)"]

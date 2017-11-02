@@ -6,4 +6,4 @@ RUN R -e "install.packages('ggplot2')"
 # copy the app to the image
 COPY ./ ./
 
-CMD ["R", "-e shiny::runApp()"]
+CMD ["R", "-e shiny::runApp(port=3838)"]

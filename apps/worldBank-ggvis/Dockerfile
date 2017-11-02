@@ -1,11 +1,11 @@
 FROM cpsievert/shiny_apps:latest
 MAINTAINER Carson Sievert "cpsievert1@gmail.com"
 
-RUN R -e "install.packages(c('ggvis', 'dplyr', 'htmltools', 'remotes'))"
+RUN R -e "install.packages(c('ggvis', 'dplyr', 'htmltools'))"
 RUN R -e "remotes::install_github('tdhock/animint')"
 
 # copy the app to the image
 COPY ./ ./
 
 # run the app
-CMD ["R", "-e shiny::runApp()"]
+CMD ["R", "-e shiny::runApp(port=3838)"]

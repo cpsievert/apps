@@ -2,7 +2,7 @@ FROM cpsievert/shiny_apps:latest
 MAINTAINER Carson Sievert "cpsievert1@gmail.com"
 
 # install necessary CRAN packages
-RUN R -e "install.packages(c('remotes', 'mvtnorm'))"
+RUN R -e "install.packages('mvtnorm')"
 
 # install tourbrush
 RUN R -e "remotes::install_github('cpsievert/tourbrush')"
@@ -10,4 +10,4 @@ RUN R -e "remotes::install_github('cpsievert/tourbrush')"
 # copy over the app
 COPY ./ ./
 
-CMD ["R", "-e shiny::runApp()"]
+CMD ["R", "-e shiny::runApp(port=3838)"]
