@@ -7,4 +7,4 @@ RUN R -e "install.packages(c('shinyjs', 'ggplot2'))"
 COPY ./ ./
 
 # run the app
-CMD ["R", "-e shiny::runApp(port=3838)"]
+CMD ["R", "-e shiny::runApp(port=3838, host='0.0.0.0')"]

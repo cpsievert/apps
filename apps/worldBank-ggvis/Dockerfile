@@ -8,4 +8,4 @@ RUN R -e "remotes::install_github('tdhock/animint')"
 COPY ./ ./
 
 # run the app
-CMD ["R", "-e shiny::runApp(port=3838)"]
+CMD ["R", "-e shiny::runApp(port=3838, host='0.0.0.0')"]

@@ -7,4 +7,4 @@ RUN R -e "remotes::install_github('cpsievert/zikar')"
 COPY ./ ./
 
 # run the app
-CMD ["R", "-e shiny::runApp(port=3838)"]
+CMD ["R", "-e shiny::runApp(port=3838, host='0.0.0.0')"]
