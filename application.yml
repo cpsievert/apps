@@ -24,7 +24,7 @@ shiny:
       port-range-start: 20000
   apps:
   - name: 3Dnormal
-    display-name: Linked brushing in a grand tour of 3-dimensional data
+    display-name: 3Dnormal
     description: Linked brushing in a grand tour of 3-dimensional data.
     docker-cmd: R -e 'shiny::runApp(port=3838, host="0.0.0.0")'
     docker-image: cpsievert/apps:shiny-3Dnormal
