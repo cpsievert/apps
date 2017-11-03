@@ -8,7 +8,7 @@ This repo contains source code and infrastructure for deploying [web application
 Run a single application
 ------------------------
 
-Each app has it's own [Docker](https://www.docker.com/) container, as well as a [image tag on DockerHub](https://hub.docker.com/r/cpsievert/shiny_apps/builds/), so you can run individual apps like so:
+Each app has it's own [Docker](https://www.docker.com/) container, as well as a [image tag on DockerHub](https://hub.docker.com/r/cpsievert/apps/builds/), so you can run individual apps like so:
 
 ``` shell
 docker run -p 3838:3838 cpsievert/apps:shiny-zikar

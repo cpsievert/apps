@@ -3,8 +3,8 @@ library(shinyAce)
 
 shinyUI(fluidPage(
   titlePanel("Visualizing ggplot2 internals"),
-  tags$h4('See', tags$a(href = "http://cpsievert.github.io/", 'here'), 'for accompanying post and',
-          tags$a(href = "https://github.com/cpsievert/shiny_apps/tree/master/ggtree", 'here'), 
+  tags$h4('See', tags$a(href = "https://blog.cpsievert.me/", 'here'), 'for accompanying post and',
+          tags$a(href = "https://github.com/cpsievert/apps/tree/master/shiny/apps/ggtree", 'here'), 
           'for source code'),
              
   tags$head(
