@@ -1,6 +1,7 @@
 .Rproj.user
 .Rhistory
 .RData
+README.gfm*
 shinyproxy.log
 shinyproxy-*.jar
 */shinyapps/

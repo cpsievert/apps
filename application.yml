@@ -27,132 +27,132 @@ shiny:
     display-name: Linked brushing in a grand tour of 3-dimensional data
     description: Linked brushing in a grand tour of 3-dimensional data.
     docker-cmd: R -e 'shiny::runApp(port=3838, host="0.0.0.0")'
-    docker-image: cpsievert/shiny_apps:3Dnormal
+    docker-image: cpsievert/apps:shiny-3Dnormal
   - name: bcviz
     display-name: bcviz
     description: ...
     docker-cmd: R -e 'shiny::runApp(port=3838, host="0.0.0.0")'
-    docker-image: cpsievert/shiny_apps:bcviz
+    docker-image: cpsievert/apps:shiny-bcviz
   - name: brush2plotly
     display-name: brush2plotly
     description: ...
     docker-cmd: R -e 'shiny::runApp(port=3838, host="0.0.0.0")'
-    docker-image: cpsievert/shiny_apps:brush2plotly
+    docker-image: cpsievert/apps:shiny-brush2plotly
   - name: cdf
     display-name: cdf
     description: ...
     docker-cmd: R -e 'shiny::runApp(port=3838, host="0.0.0.0")'
-    docker-image: cpsievert/shiny_apps:cdf
+    docker-image: cpsievert/apps:shiny-cdf
   - name: clearBrush
     display-name: clearBrush
     description: ...
     docker-cmd: R -e 'shiny::runApp(port=3838, host="0.0.0.0")'
-    docker-image: cpsievert/shiny_apps:clearBrush
+    docker-image: cpsievert/apps:shiny-clearBrush
   - name: CLT
     display-name: CLT
     description: ...
     docker-cmd: R -e 'shiny::runApp(port=3838, host="0.0.0.0")'
-    docker-image: cpsievert/shiny_apps:CLT
+    docker-image: cpsievert/apps:shiny-CLT
   - name: eechidna
     display-name: eechidna
     description: ...
     docker-cmd: R -e 'shiny::runApp(port=3838, host="0.0.0.0")'
-    docker-image: cpsievert/shiny_apps:eechidna
+    docker-image: cpsievert/apps:shiny-eechidna
   - name: ggtree
     display-name: ggtree
     description: ...
     docker-cmd: R -e 'shiny::runApp(port=3838, host="0.0.0.0")'
-    docker-image: cpsievert/shiny_apps:ggtree
+    docker-image: cpsievert/apps:shiny-ggtree
   - name: intervals
     display-name: intervals
     description: ...
     docker-cmd: R -e 'shiny::runApp(port=3838, host="0.0.0.0")'
-    docker-image: cpsievert/shiny_apps:intervals
+    docker-image: cpsievert/apps:shiny-intervals
   - name: LDAelife
     display-name: LDAelife
     description: ...
     docker-cmd: R -e 'shiny::runApp(port=3838, host="0.0.0.0")'
-    docker-image: cpsievert/shiny_apps:LDAelife
+    docker-image: cpsievert/apps:shiny-LDAelife
   - name: lmGadget
     display-name: lmGadget
     description: ...
     docker-cmd: R -e 'shiny::runApp(port=3838, host="0.0.0.0")'
-    docker-image: cpsievert/shiny_apps:lmGadget
+    docker-image: cpsievert/apps:shiny-lmGadget
   - name: pitchRx
     display-name: pitchRx
     description: ...
     docker-cmd: R -e 'shiny::runApp(port=3838, host="0.0.0.0")'
-    docker-image: cpsievert/shiny_apps:pitchRx
+    docker-image: cpsievert/apps:shiny-pitchRx
   - name: pitchRx-db
     display-name: pitchRx-db
     description: ...
     docker-cmd: R -e 'shiny::runApp(port=3838, host="0.0.0.0")'
-    docker-image: cpsievert/shiny_apps:pitchRx-db
+    docker-image: cpsievert/apps:shiny-pitchRx-db
   - name: pitchRx2
     display-name: pitchRx2
     description: ...
     docker-cmd: R -e 'shiny::runApp(port=3838, host="0.0.0.0")'
-    docker-image: cpsievert/shiny_apps:pitchRx2
+    docker-image: cpsievert/apps:shiny-pitchRx2
   - name: plotlyAg
     display-name: plotlyAg
     description: ...
     docker-cmd: R -e 'shiny::runApp(port=3838, host="0.0.0.0")'
-    docker-image: cpsievert/shiny_apps:plotlyAg
+    docker-image: cpsievert/apps:shiny-plotlyAg
   - name: plotlyEvents
     display-name: plotlyEvents
     description: ...
     docker-cmd: R -e 'shiny::runApp(port=3838, host="0.0.0.0")'
-    docker-image: cpsievert/shiny_apps:plotlyEvents
+    docker-image: cpsievert/apps:shiny-plotlyEvents
   - name: plotlyLinkedBrush
     display-name: plotlyLinkedBrush
     description: ...
     docker-cmd: R -e 'shiny::runApp(port=3838, host="0.0.0.0")'
-    docker-image: cpsievert/shiny_apps:plotlyLinkedBrush
+    docker-image: cpsievert/apps:shiny-plotlyLinkedBrush
   - name: plotlyLinkedClick
     display-name: plotlyLinkedClick
     description: ...
     docker-cmd: R -e 'shiny::runApp(port=3838, host="0.0.0.0")'
-    docker-image: cpsievert/shiny_apps:plotlyLinkedClick
+    docker-image: cpsievert/apps:shiny-plotlyLinkedClick
   - name: plotlyViewer
     display-name: plotlyViewer
     description: ...
     docker-cmd: R -e 'shiny::runApp(port=3838, host="0.0.0.0")'
-    docker-image: cpsievert/shiny_apps:plotlyViewer
+    docker-image: cpsievert/apps:shiny-plotlyViewer
   - name: regInf
     display-name: regInf
     description: ...
     docker-cmd: R -e 'shiny::runApp(port=3838, host="0.0.0.0")'
-    docker-image: cpsievert/shiny_apps:regInf
+    docker-image: cpsievert/apps:shiny-regInf
   - name: sampling
     display-name: sampling
     description: ...
     docker-cmd: R -e 'shiny::runApp(port=3838, host="0.0.0.0")'
-    docker-image: cpsievert/shiny_apps:sampling
+    docker-image: cpsievert/apps:shiny-sampling
   - name: testing
     display-name: testing
     description: ...
     docker-cmd: R -e 'shiny::runApp(port=3838, host="0.0.0.0")'
-    docker-image: cpsievert/shiny_apps:testing
+    docker-image: cpsievert/apps:shiny-testing
   - name: testing2
     display-name: testing2
     description: ...
     docker-cmd: R -e 'shiny::runApp(port=3838, host="0.0.0.0")'
-    docker-image: cpsievert/shiny_apps:testing2
+    docker-image: cpsievert/apps:shiny-testing2
   - name: topnames
     display-name: topnames
     description: ...
     docker-cmd: R -e 'shiny::runApp(port=3838, host="0.0.0.0")'
-    docker-image: cpsievert/shiny_apps:topnames
+    docker-image: cpsievert/apps:shiny-topnames
   - name: worldBank-ggvis
     display-name: worldBank-ggvis
     description: ...
     docker-cmd: R -e 'shiny::runApp(port=3838, host="0.0.0.0")'
-    docker-image: cpsievert/shiny_apps:worldBank-ggvis
+    docker-image: cpsievert/apps:shiny-worldBank-ggvis
   - name: zikar
     display-name: zikar
     description: ...
     docker-cmd: R -e 'shiny::runApp(port=3838, host="0.0.0.0")'
-    docker-image: cpsievert/shiny_apps:zikar
+    docker-image: cpsievert/apps:shiny-zikar
 
 logging:
   file:

@@ -1,4 +1,4 @@
-FROM cpsievert/shiny_apps:latest
+FROM cpsievert/apps:shiny
 MAINTAINER Carson Sievert "cpsievert1@gmail.com"
 
 RUN R -e "install.packages('ggplot2')"
