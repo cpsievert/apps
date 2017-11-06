@@ -8,6 +8,7 @@ MAINTAINER Carson Sievert "cpsievert1@gmail.com"
 
 RUN apt-get update && apt-get install -y \
     sudo \
+    software-properties-common \
     libcurl4-gnutls-dev \
     libcairo2-dev \
     libxt-dev \
