@@ -10,4 +10,4 @@ RUN R -e "remotes::install_github('cpsievert/tourbrush')"
 # copy over the app
 COPY ./ ./
 
-CMD R -e 'shiny::runApp(port=3838, host="0.0.0.0")'
+CMD R -e 'shiny::runApp()'

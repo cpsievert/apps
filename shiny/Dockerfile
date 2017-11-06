@@ -16,4 +16,7 @@ RUN apt-get update && apt-get install -y \
 
 RUN R -e "update.packages(ask=F); install.packages(c('shiny', 'remotes', 'curl'))"
 
+# set host and port
+COPY Rprofile.site /usr/lib/R/etc/
+
 EXPOSE 3838

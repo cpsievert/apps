@@ -20,4 +20,32 @@ If you'd like to run a different app, you can get the image tag from the [`appli
 
 ## Run all the applications
 
+To run all the applications, a necessary first step is to build/pull all the docker images
+
+```shell
+git clone https://github.com/cpsievert/apps.git
+cd apps
+make
+```
+
+
 The [`application.yml`](https://github.com/cpsievert/apps/blob/master/application.yml) can be used/modified to (securely) run all the applications as a service via [shinyproxy](https://www.shinyproxy.io/). See my blog post (coming soon)
+
+
+
+```shell
+wget https://www.shinyproxy.io/downloads/shinyproxy-1.0.1.jar
+wget https://raw.githubusercontent.com/cpsievert/apps/master/application.yml
+java -jar shinyproxy-1.0.1.jar
+```
+
+
+## Contributing
+
+Some notes on how to add an application:
+
+
+
+
+
+
