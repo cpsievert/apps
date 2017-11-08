@@ -1,6 +1,10 @@
 library(plotly)
 library(shiny)
 d <- read.csv("https://raw.githubusercontent.com/plotly/datasets/master/2011_us_ag_exports.csv")
+# useless vars
+d <- d[!names(d) %in% "category"]
+
+dmelt <- tidyr::gather(d[!names(d) %in% "code"], variable, value, -state)
 
 # give state boundaries a white border
 l <- list(color = toRGB("white"), width = 2)
@@ -12,38 +16,42 @@ g <- list(
   lakecolor = toRGB('white')
 )
 
+# TODO: a dropdown to select different variables...
 ui <- fluidPage(
-  mainPanel(
-    plotlyOutput("map"),
-    plotlyOutput("hist")
-  ),
-  verbatimTextOutput("selection")
+  fluidRow(plotlyOutput("map")),
+  plotlyOutput("hist", width = "100%")
 )
 
 server <- function(input, output, session) {
   
-  cv <- crosstalk::ClientValue$new("plotly_select", group = "A")
-  
   output$map <- renderPlotly({
-    s <- cv$get()
-    if (length(s$x) > 0) {
-      # ask Alex to return the extent of the brush?
-      x <- d$cotton
-      d <- d[min(s$x) <= x & x <= max(s$x), ]
-    }
-    plot_ly(d, z = total.exports, locations = code, type = 'choropleth',
-            locationmode = 'USA-states', color = total.exports,
-            marker = list(line = l), colorbar = list(title = "Millions USD")) %>%
-      layout(geo = g)
+    plot_geo(
+      d, z = ~total.exports, key = ~state, type = "choropleth",
+      locations = ~code, locationmode = 'USA-states', 
+      color = ~total.exports, marker = list(line = l),
+      colorbar = list(title = "Total ag exports \n (millions USD)")
+    ) %>%
+      layout(
+        title = "Click and drag to query state(s)",
+        geo = g, dragmode = "lasso"
+      )
   })
   
+  # TODO: a density plot would be better?
   output$hist <- renderPlotly({
-    # plotly_select is currently only for markers :(
-    plot_ly(d, x = cotton, type = 'histogram')
-  })
-  
-  output$selection <- renderPrint({
-    cv$get()
+    ed <- event_data("plotly_selected")
+    p <- ggplot(dmelt, aes(value)) + 
+      geom_density() + 
+      facet_wrap(~variable, scales = "free") +
+      labs(x = NULL, y = NULL) +
+      theme_minimal() +
+      theme(
+        axis.title.y = element_blank(),
+        axis.text.y = element_blank(),
+        axis.ticks.y = element_blank()
+      )
+    if (!is.null(ed)) p <- p + geom_density(data = dmelt[dmelt$state %in% ed$key, ], lty = 3)
+    ggplotly(p, dynamicTicks = TRUE, height = 500)
   })
   
 }
