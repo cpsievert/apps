@@ -126,16 +126,19 @@ shinyUI(pageWithSidebar(
   
   #Main panel with static (strikezone) plot and download button
   mainPanel(
-    tabsetPanel(id="tabs",
-                tabPanel("3D Scatterplot", webGLOutput("myWebGL")),
-                tabPanel("2D Scatterplot", HTML("<div class=\"span8\">
-                                                <a id=\"downloadPlot\" class=\"btn shiny-download-link\" target=\"_blank\">Download Current Plot</a>
-                                                <div id=\"staticPlot\" class=\"shiny-plot-output\" style=\"position:fixed ; width: 60% ; height: 80%\">
-                                                </div>
-                                                </div>"))
-                
-                )
-                )
+    tabsetPanel(
+      id = "tabs",
+      selected = "2D Scatterplot",
+      tabPanel("3D Scatterplot", webGLOutput("myWebGL")),
+      tabPanel("2D Scatterplot", 
+               HTML("<div class=\"span8\">
+                     <a id=\"downloadPlot\" class=\"btn shiny-download-link\" target=\"_blank\">Download Current Plot</a>
+                      <div id=\"staticPlot\" class=\"shiny-plot-output\" style=\"position:fixed ; width: 60% ; height: 80%\"></div>
+                   </div>")
+      )
+      
+    )
+  )
   
   
-  ))
+))

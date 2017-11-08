@@ -179,7 +179,7 @@ shinyServer(function(input, output) {
     }
   })
   
-  output$staticPlot <- reactivePlot(function() {
+  output$staticPlot <- renderPlot({
     print(plotFX())
   })
   
