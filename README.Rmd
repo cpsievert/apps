@@ -4,7 +4,7 @@ output: github_document
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# My web applications <img src="https://www.rstudio.com/wp-content/uploads/2014/04/shiny.png" width=100 align="right" /> <img src="http://www.unixstickers.com/image/cache/data/stickers/flask/Flask-text.sh-180x180.png" width=100 align="right" />
+# My web applications <img src="https://www.rstudio.com/wp-content/uploads/2014/04/shiny.png" width=100 align="right" /> <img src="http://www.unixstickers.com/image/cache/data/stickers/flask/Flask-text.sh-180x180.png" width=100 align="right" /> <br /> <img src="http://logo-logos.com/wp-content/uploads/2016/10/Docker_logo_logotype.png" width=100 align="right" />
 
 This repo contains code for building and deploying [web applications](https://en.wikipedia.org/wiki/Web_application) (e.g. [shiny](https://cran.r-project.org/package=shiny), [fiery](https://cran.r-project.org/package=fiery), and [flask](http://flask.pocoo.org/)) that I've developed for public consumption. 
 
