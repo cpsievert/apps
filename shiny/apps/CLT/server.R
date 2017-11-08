@@ -4,7 +4,7 @@ animationOptions(interval = 100000)
 
 shinyServer(function(input, output) {
   
-  getDat <- reactive(function() {
+  getDat <- reactive({
     if (input$data == "Summer 2014 Midterm") {
       dat <- c(56.5, 53.7, 0, 80.7, 71, 56, 79.3, 0, 45.2, 0, 54, 50.3, 40.7, 104, 77, 76.2, 
                58.8, 80.7, 35.5, 90, 89.5, 78.5, 0, 0, 0, 85.5, 74, 26.5, 79.7, 48.5, 47.5, 
@@ -88,14 +88,13 @@ shinyServer(function(input, output) {
                90, 90, 52, 70, 73, 43, 72, 88, 70, 84, 82, 81, 91, 70, 84, 83, 76, 59, 
                63, 84, 0, 0, 56)
     } else if (input$data == "rivers") {
-      library(datasets)
-      data(rivers)
-      dat <- get("rivers")
+      data(rivers, package = "datasets")
+      return(rivers)
     }
-    return(dat)
+    dat
   })
   
-  samples <- reactive(function() {
+  samples <- reactive({
     dat <- getDat()
     if (input$sample) {
       means <- NULL
@@ -111,15 +110,15 @@ shinyServer(function(input, output) {
     }
   })
   
-  output$xmin <- reactiveUI(function() {
+  output$xmin <- renderUI({
     numericInput("xmin", "", min(getDat()))
   })
   
-  output$xmax <- reactiveUI(function() {
+  output$xmax <- renderUI({
     numericInput("xmax", "", max(getDat()))
   })
   
-  output$sampDist <- renderPlot(function() {
+  output$sampDist <- renderPlot({
     dat <- getDat()
     samps <- samples()
     pop.mean <- mean(dat)
