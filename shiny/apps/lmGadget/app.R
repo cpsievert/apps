@@ -79,8 +79,10 @@ lmGadget <- function(dat, x, y, key = row.names(dat)) {
 
 app <- lmGadget(mtcars, x = ~wt, y = ~mpg)
 
-if (interactive()) {
+results <- if (interactive()) {
   runGadget(app$ui, app$server)
 } else {
   shinyApp(app$ui, app$server)
 }
+
+results
