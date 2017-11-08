@@ -6,8 +6,6 @@ d <- d[!names(d) %in% "category"]
 
 dmelt <- tidyr::gather(d[!names(d) %in% "code"], variable, value, -state)
 
-# give state boundaries a white border
-l <- list(color = toRGB("white"), width = 2)
 # specify some map projection/options
 g <- list(
   scope = 'usa',
@@ -28,7 +26,9 @@ server <- function(input, output, session) {
     plot_geo(
       d, z = ~total.exports, key = ~state, type = "choropleth",
       locations = ~code, locationmode = 'USA-states', 
-      color = ~total.exports, marker = list(line = l),
+      color = ~total.exports, 
+      # give state boundaries a white border
+      marker = list(line = list(color = toRGB("white"), width = 2)),
       colorbar = list(title = "Total ag exports \n (millions USD)")
     ) %>%
       layout(
@@ -37,7 +37,6 @@ server <- function(input, output, session) {
       )
   })
   
-  # TODO: a density plot would be better?
   output$hist <- renderPlotly({
     ed <- event_data("plotly_selected")
     p <- ggplot(dmelt, aes(value)) + 

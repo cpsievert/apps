@@ -42,7 +42,6 @@ shinyServer(function(input, output, session) {
     p <- plotAreaT(section=input$type, q1=input$q1)
     p <- p + theme(line = element_blank(), 
           text = element_blank(),
-          line = element_blank(),
           title = element_blank())
     gt <- ggplot_gtable(ggplot_build(p))
     ge <- subset(gt$layout, name == "panel")
