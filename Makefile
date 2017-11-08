@@ -1,8 +1,5 @@
 all: shiny-images
 
-publish:
-	docker push cpsievert/apps
-
 shiny-images:
 	docker build -t cpsievert/apps:shiny shiny
 	docker build -t cpsievert/apps:shiny-template shiny/template
@@ -34,10 +31,23 @@ shiny-images:
 	docker build -t cpsievert/apps:shiny-zikar shiny/apps/zikar 
 
 
+# build a new shiny app (from a template)
 # use like `make shiny app=genius`
 shiny:
 	mkdir shiny/apps/${app}
 	cp shiny/template/* shiny/apps/${app}
+	
+# publish all the images!
+# TODO: will this automatically push all tags?
+push:
+	docker push cpsievert/apps
+
+# pull down all the images
+# http://www.googlinux.com/list-all-tags-of-docker-image/index.html
+pull:
+	curl 'https://registry.hub.docker.com/v2/repositories/cpsievert/apps/tags/' | jq '."results"[]["name"]' | xargs -I {} echo cpsievert/apps:{} | xargs docker pull
+
+	
 
 readme:
 	Rscript -e 'knitr::knit("README.Rmd")'
