@@ -1,4 +1,4 @@
-FROM openanalytics/r-base
+FROM rocker/r-ver:latest
 MAINTAINER Carson Sievert "cpsievert1@gmail.com"
 
 # ---------------------------------------------------------------------------
@@ -8,8 +8,6 @@ MAINTAINER Carson Sievert "cpsievert1@gmail.com"
 
 RUN apt-get update && apt-get install -y \
     sudo \
-    pandoc \
-    pandoc-citeproc \
     software-properties-common \
     libcurl4-gnutls-dev \
     libcairo2-dev \
