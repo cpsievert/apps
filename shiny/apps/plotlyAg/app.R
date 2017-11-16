@@ -39,15 +39,15 @@ server <- function(input, output, session) {
   
   output$hist <- renderPlotly({
     ed <- event_data("plotly_selected")
-    p <- ggplot(dmelt, aes(value)) + 
+    p <- ggplot(dmelt, aes(sqrt(value))) + 
       geom_density() + 
       facet_wrap(~variable, scales = "free") +
       labs(x = NULL, y = NULL) +
       theme_minimal() +
       theme(
-        axis.title.y = element_blank(),
-        axis.text.y = element_blank(),
-        axis.ticks.y = element_blank()
+        axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank()
       )
     if (!is.null(ed)) p <- p + geom_density(data = dmelt[dmelt$state %in% ed$key, ], lty = 3)
     ggplotly(p, dynamicTicks = TRUE, height = 500)

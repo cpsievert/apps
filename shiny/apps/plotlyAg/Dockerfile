@@ -1,7 +1,7 @@
 FROM cpsievert/apps:shiny
 MAINTAINER Carson Sievert "cpsievert1@gmail.com"
 
-RUN R -e "install.packages('plotly')"
+RUN R -e "remotes::install_github('ropensci/plotly')"
 
 # copy the app to the image
 COPY ./ ./
