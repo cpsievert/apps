@@ -1,8 +1,8 @@
 FROM cpsievert/apps:shiny
 MAINTAINER Carson Sievert "cpsievert1@gmail.com"
 
-# system dependencies for rgdal https://github.com/ropenscilabs/eechidna#readme
-RUN sudo apt-get install -y libgdal-dev libgeos-dev libjq-dev libprotobuf-dev protobuf-compiler
+# so many system dependencies https://github.com/ropenscilabs/eechidna#readme
+RUN sudo apt-get install -y libgdal-dev libgeos-dev libjq-dev libprotobuf-dev protobuf-compiler libv8-3.14-devR
 
 RUN R -e "install.packages('eechidna')"
 
