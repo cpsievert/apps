@@ -51,41 +51,36 @@ shiny:
     description: Exploring relationships between demographics and Australian voting outcomes.
     docker-cmd: ["R", "-e", "shiny::runApp()"]
     docker-image: cpsievert/apps:shiny-eechidna
+  - name: worldBank-ggvis
+    display-name: worldBank-ggvis
+    description: The evolution in the relationship between health and wealth.
+    docker-cmd: ["R", "-e", "shiny::runApp()"]
+    docker-image: cpsievert/apps:shiny-worldBank-ggvis
+  - name: topnames
+    display-name: topnames
+    description: Search for the frequency of baby name(s).
+    docker-cmd: ["R", "-e", "shiny::runApp()"]
+    docker-image: cpsievert/apps:shiny-topnames
+  - name: lmGadget
+    display-name: lmGadget
+    description: Removing 
+    docker-cmd: ["R", "-e", "shiny::runApp()"]
+    docker-image: cpsievert/apps:shiny-lmGadget  
   - name: 3Dnormal
     display-name: 3Dnormal
     description: Linked brushing in a grand tour of 3-dimensional data.
     docker-cmd: ["R", "-e", "shiny::runApp()"]
     docker-image: cpsievert/apps:shiny-3Dnormal
-  - name: brush2plotly
-    display-name: brush2plotly
-    description: An example of linked brushing with ggplot2 and plotly.
-    docker-cmd: ["R", "-e", "shiny::runApp()"]
-    docker-image: cpsievert/apps:shiny-brush2plotly
-  - name: cdf
-    display-name: cdf
-    description: A demonstration of cumulative distribution functions
-    docker-cmd: ["R", "-e", "shiny::runApp()"]
-    docker-image: cpsievert/apps:shiny-cdf
-  - name: clearBrush
-    display-name: clearBrush
-    description: 
-    docker-cmd: ["R", "-e", "shiny::runApp()"]
-    docker-image: cpsievert/apps:shiny-clearBrush
-  - name: CLT
-    display-name: CLT
-    description: A demonstration of the Central Limit Thereom
-    docker-cmd: ["R", "-e", "shiny::runApp()"]
-    docker-image: cpsievert/apps:shiny-CLT
-  - name: intervals
-    display-name: intervals
-    description: A demonstration of 
-    docker-cmd: ["R", "-e", "shiny::runApp()"]
-    docker-image: cpsievert/apps:shiny-intervals
-  - name: lmGadget
-    display-name: lmGadget
-    description: Removing 
-    docker-cmd: ["R", "-e", "shiny::runApp()"]
-    docker-image: cpsievert/apps:shiny-lmGadget
+  #- name: brush2plotly
+  #  display-name: brush2plotly
+  #  description: Simple example of linked brushing with ggplot2 and plotly.
+  #  docker-cmd: ["R", "-e", "shiny::runApp()"]
+  #  docker-image: cpsievert/apps:shiny-brush2plotly
+  #- name: clearBrush
+  #  display-name: clearBrush
+  #  description: 
+  #  docker-cmd: ["R", "-e", "shiny::runApp()"]
+  #  docker-image: cpsievert/apps:shiny-clearBrush
   - name: pitchRx
     display-name: pitchRx
     description: Upload and visualize PITCHf/x data via the pitchRx package
@@ -101,34 +96,49 @@ shiny:
   #  description: ...
   #  docker-cmd: ["R", "-e", "shiny::runApp()"]
   #  docker-image: cpsievert/apps:shiny-pitchRx2
-  - name: plotlyEvents
-    display-name: plotlyEvents
-    description: A demonstration of how to access plotly user events
-    docker-cmd: ["R", "-e", "shiny::runApp()"]
-    docker-image: cpsievert/apps:shiny-plotlyEvents
-  - name: plotlyLinkedBrush
-    display-name: plotlyLinkedBrush
-    description: A basic example of linked brushing with plotly and shiny
-    docker-cmd: ["R", "-e", "shiny::runApp()"]
-    docker-image: cpsievert/apps:shiny-plotlyLinkedBrush
   - name: plotlyLinkedClick
     display-name: plotlyLinkedClick
     description: Click on a cell of a correlation matrix to plot the corresponding scatterplot
     docker-cmd: ["R", "-e", "shiny::runApp()"]
     docker-image: cpsievert/apps:shiny-plotlyLinkedClick
+  - name: plotlyLinkedBrush
+    display-name: plotlyLinkedBrush
+    description: A basic example of linked brushing with plotly and shiny
+    docker-cmd: ["R", "-e", "shiny::runApp()"]
+    docker-image: cpsievert/apps:shiny-plotlyLinkedBrush
+  - name: plotlyEvents
+    display-name: plotlyEvents
+    description: A demonstration of how to access plotly user events
+    docker-cmd: ["R", "-e", "shiny::runApp()"]
+    docker-image: cpsievert/apps:shiny-plotlyEvents
   #- name: plotlyViewer
   #  display-name: plotlyViewer
   #  description: A tool
   #  docker-cmd: ["R", "-e", "shiny::runApp()"]
   #  docker-image: cpsievert/apps:shiny-plotlyViewer
+  - name: cdf
+    display-name: cdf
+    description: Understanding cumulative distribution functions
+    docker-cmd: ["R", "-e", "shiny::runApp()"]
+    docker-image: cpsievert/apps:shiny-cdf
+  - name: CLT
+    display-name: CLT
+    description: Understanding the Central Limit Thereom
+    docker-cmd: ["R", "-e", "shiny::runApp()"]
+    docker-image: cpsievert/apps:shiny-CLT
+  - name: intervals
+    display-name: intervals
+    description: Understanding the Law of Large Numbers
+    docker-cmd: ["R", "-e", "shiny::runApp()"]
+    docker-image: cpsievert/apps:shiny-intervals
   - name: sampling
     display-name: sampling
-    description: Understanding the asymptotics of sampling distributions.
+    description: Understanding sampling distributions.
     docker-cmd: ["R", "-e", "shiny::runApp()"]
     docker-image: cpsievert/apps:shiny-sampling
   - name: regInf
     display-name: regInf
-    description: Understanding the asymptotics of regression inference.
+    description: Understanding the connection between sampling distributions and regression inference.
     docker-cmd: ["R", "-e", "shiny::runApp()"]
     docker-image: cpsievert/apps:shiny-regInf  
   - name: testing
@@ -141,16 +151,7 @@ shiny:
     description: Understanding the connection between confidence intervals and hypothesis tests (continued).
     docker-cmd: ["R", "-e", "shiny::runApp()"]
     docker-image: cpsievert/apps:shiny-testing2
-  - name: topnames
-    display-name: topnames
-    description: Search for the frequency of baby name(s).
-    docker-cmd: ["R", "-e", "shiny::runApp()"]
-    docker-image: cpsievert/apps:shiny-topnames
-  - name: worldBank-ggvis
-    display-name: worldBank-ggvis
-    description: The evolution in the relationship between health and wealth.
-    docker-cmd: ["R", "-e", "shiny::runApp()"]
-    docker-image: cpsievert/apps:shiny-worldBank-ggvis
+  
 
 logging:
   file:
