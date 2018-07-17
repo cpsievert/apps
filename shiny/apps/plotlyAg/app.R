@@ -41,7 +41,7 @@ server <- function(input, output, session) {
     ed <- event_data("plotly_selected")
     p <- ggplot(dmelt, aes(sqrt(value))) + 
       geom_density() + 
-      facet_wrap(~variable, scales = "free") +
+      facet_wrap(~variable, scales = "free", ncol = 3) +
       labs(x = NULL, y = NULL) +
       theme_minimal() +
       theme(

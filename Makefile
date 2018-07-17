@@ -45,10 +45,8 @@ push:
 # pull down all the images
 # http://www.googlinux.com/list-all-tags-of-docker-image/index.html
 pull:
-	curl 'https://registry.hub.docker.com/v2/repositories/cpsievert/apps/tags/' | jq '."results"[]["name"]' | xargs -I {} echo cpsievert/apps:{} | xargs docker pull
-
+	curl 'https://registry.hub.docker.com/v2/repositories/cpsievert/apps/tags/' | jq '."results"[]["name"]' | xargs -I {} echo cpsievert/apps:{} | xargs -L1 sudo docker pull
 	
-
 readme:
 	Rscript -e 'knitr::knit("README.Rmd")'
 
