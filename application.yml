@@ -23,12 +23,12 @@ shiny:
   apps:
   - name: bcviz
     display-name: bcviz
-    description: BC housing market explorer.
+    description: BC housing market explorer (see <a href='https://vimeo.com/207379729'>here</a> for a demo video).
     docker-cmd: ["R", "-e", "shiny::runApp()"]
     docker-image: cpsievert/apps:shiny-bcviz
   - name: zikar
     display-name: zikar
-    description: Exploring zika virus reports.
+    description: Exploring zika virus reports (see <a href='https://vimeo.com/190736801'>here</a> and <a href='https://vimeo.com/190610577'>here</a> for demo videos).
     docker-cmd: ["R", "-e", "shiny::runApp()"]
     docker-image: cpsievert/apps:shiny-zikar
   - name: plotlyAg
@@ -38,7 +38,7 @@ shiny:
     docker-image: cpsievert/apps:shiny-plotlyAg
   - name: ggtree
     display-name: ggtree
-    description: Visualizing ggplot2 internals.
+    description: Visualizing ggplot2 internals (see <a href='https://blog.cpsievert.me/2014/06/01/visualizing-ggplot2-internals-with-shiny-and-d3/'>here</a> for an explanation).
     docker-cmd: ["R", "-e", "shiny::runApp()"]
     docker-image: cpsievert/apps:shiny-ggtree
   - name: LDAelife
@@ -48,7 +48,7 @@ shiny:
     docker-image: cpsievert/apps:shiny-LDAelife
   - name: eechidna
     display-name: eechidna
-    description: Exploring relationships between demographics and Australian voting outcomes.
+    description: Exploring relationships between demographics and Australian voting outcomes (see <a href='https://vimeo.com/167367369?cjevent=7af7ea258aa511e8801200ce0a240613'>here</a>, <a href='https://vimeo.com/221026626'>here</a>, and <a href='https://vimeo.com/191553616'>here</a> for demo videos).
     docker-cmd: ["R", "-e", "shiny::runApp()"]
     docker-image: cpsievert/apps:shiny-eechidna
   - name: worldBank-ggvis
@@ -63,12 +63,12 @@ shiny:
     docker-image: cpsievert/apps:shiny-topnames
   - name: lmGadget
     display-name: lmGadget
-    description: Removing 
+    description: Remove outliers from a linear model.
     docker-cmd: ["R", "-e", "shiny::runApp()"]
     docker-image: cpsievert/apps:shiny-lmGadget  
   - name: 3Dnormal
     display-name: 3Dnormal
-    description: Linked brushing in a grand tour of 3-dimensional data.
+    description: Linked brushing in a grand tour of 3-dimensional data (see <a href='https://vimeo.com/160825528'>here</a> for a demo video).
     docker-cmd: ["R", "-e", "shiny::runApp()"]
     docker-image: cpsievert/apps:shiny-3Dnormal
   #- name: brush2plotly
@@ -83,7 +83,7 @@ shiny:
   #  docker-image: cpsievert/apps:shiny-clearBrush
   - name: pitchRx
     display-name: pitchRx
-    description: Upload and visualize PITCHf/x data via the pitchRx package
+    description: Upload and visualize PITCHf/x data via the pitchRx package.
     docker-cmd: ["R", "-e", "shiny::runApp()"]
     docker-image: cpsievert/apps:shiny-pitchRx
   #- name: pitchRx-db
@@ -98,17 +98,17 @@ shiny:
   #  docker-image: cpsievert/apps:shiny-pitchRx2
   - name: plotlyLinkedClick
     display-name: plotlyLinkedClick
-    description: Click on a cell of a correlation matrix to plot the corresponding scatterplot
+    description: Click on a cell of a correlation matrix to plot the corresponding scatterplot.
     docker-cmd: ["R", "-e", "shiny::runApp()"]
     docker-image: cpsievert/apps:shiny-plotlyLinkedClick
   - name: plotlyLinkedBrush
     display-name: plotlyLinkedBrush
-    description: A basic example of linked brushing with plotly and shiny
+    description: A basic example of linked brushing with plotly and shiny.
     docker-cmd: ["R", "-e", "shiny::runApp()"]
     docker-image: cpsievert/apps:shiny-plotlyLinkedBrush
   - name: plotlyEvents
     display-name: plotlyEvents
-    description: A demonstration of how to access plotly user events
+    description: A demonstration of how to access plotly user events.
     docker-cmd: ["R", "-e", "shiny::runApp()"]
     docker-image: cpsievert/apps:shiny-plotlyEvents
   #- name: plotlyViewer
@@ -118,17 +118,17 @@ shiny:
   #  docker-image: cpsievert/apps:shiny-plotlyViewer
   - name: cdf
     display-name: cdf
-    description: Understanding cumulative distribution functions
+    description: Understanding cumulative distribution functions.
     docker-cmd: ["R", "-e", "shiny::runApp()"]
     docker-image: cpsievert/apps:shiny-cdf
   - name: CLT
     display-name: CLT
-    description: Understanding the Central Limit Thereom
+    description: Understanding the Central Limit Thereom.
     docker-cmd: ["R", "-e", "shiny::runApp()"]
     docker-image: cpsievert/apps:shiny-CLT
   - name: intervals
     display-name: intervals
-    description: Understanding the Law of Large Numbers
+    description: Understanding the Law of Large Numbers.
     docker-cmd: ["R", "-e", "shiny::runApp()"]
     docker-image: cpsievert/apps:shiny-intervals
   - name: sampling
